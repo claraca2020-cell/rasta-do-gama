@@ -90,13 +90,13 @@ section[id] {
   text-transform: uppercase;
 }
 
-/* traço amarelo sob títulos centralizados (como no Instituto Galo) */
+/* traço com cores do reggae sob títulos centralizados (como no Instituto Galo) */
 .title-rule::after {
   display: block;
   width: 56px;
   height: 3px;
   margin: 18px auto 0;
-  background: var(--color-sun);
+  background: linear-gradient(90deg, #12a150 0 33.33%, #ffcd00 33.33% 66.66%, #e0342b 66.66% 100%);
   content: "";
 }
 .title-rule-left::after {
