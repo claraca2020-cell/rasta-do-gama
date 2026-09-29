@@ -293,12 +293,18 @@ export function SocialArea() {
           </div>
         </div>
 
-        <ol className="mt-20 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {/* 2 × 2 no celular e tablet, 4 lado a lado no computador; cartões com a mesma altura em cada linha */}
+        <ol className="mt-16 grid grid-cols-2 gap-3 sm:gap-4 md:mt-20 lg:grid-cols-4">
           {ACTIONS.map((action) => (
-            <li key={action.title} className="border-t-4 border-[var(--color-brand)] bg-white p-5 shadow-[0_6px_20px_rgba(8,61,33,0.06)]">
-              <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[var(--color-brand)]">{action.date}</p>
-              <p className="heading mt-2 text-2xl text-[var(--color-ink)]">{action.title}</p>
-              <p className="mt-1 text-sm text-[var(--color-text-muted)]">{action.text}</p>
+            <li
+              key={action.title}
+              className="flex h-full flex-col border-t-4 border-[var(--color-brand)] bg-white p-4 shadow-[0_6px_20px_rgba(8,61,33,0.06)] sm:p-5"
+            >
+              <p className="text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-[var(--color-brand)] sm:text-xs sm:tracking-[0.15em]">
+                {action.date}
+              </p>
+              <p className="heading mt-2 text-[1.35rem] leading-[1.05] text-[var(--color-ink)] sm:text-2xl">{action.title}</p>
+              <p className="mt-1.5 text-[0.8rem] leading-snug text-[var(--color-text-muted)] sm:text-sm">{action.text}</p>
             </li>
           ))}
         </ol>
