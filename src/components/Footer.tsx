@@ -19,7 +19,7 @@ export function Footer() {
             <Wordmark className="hidden md:flex" logoClassName="h-20" />
           </Link>
           <div className="flex items-center gap-5 md:gap-10">
-            <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" aria-label={`Instagram ${INSTAGRAM_HANDLE}`} className="flex h-11 w-11 items-center justify-center rounded-full transition-colors hover:text-[var(--color-sun)]" style={{ background: 'linear-gradient(90deg, #12a150 0 33.33%, #ffcd00 33.33% 66.66%, #e0342b 66.66% 100%)', padding: '2px', WebkitMaskImage: 'radial-gradient(circle, transparent 40%, black 60%)', maskImage: 'radial-gradient(circle, transparent 40%, black 60%)' }}>
+            <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" aria-label={`Instagram ${INSTAGRAM_HANDLE}`} className="flex h-11 w-11 items-center justify-center rounded-full transition-colors hover:text-[var(--color-sun)] border-2" style={{ borderImage: 'linear-gradient(90deg, #12a150 0 33.33%, #ffcd00 33.33% 66.66%, #e0342b 66.66% 100%) 1', backgroundColor: 'white', color: '#083d21' }}>
               <InstagramIcon size={34} />
             </a>
             <a
@@ -28,8 +28,8 @@ export function Footer() {
               rel="noreferrer"
               aria-label={`WhatsApp ${WHATSAPP_DISPLAY}`}
               onClick={() => trackEvent('whatsapp_click', { source: 'footer' })}
-              className="flex h-11 w-11 items-center justify-center rounded-full transition-colors hover:text-[var(--color-sun)]"
-              style={{ background: 'linear-gradient(90deg, #12a150 0 33.33%, #ffcd00 33.33% 66.66%, #e0342b 66.66% 100%)', padding: '2px', WebkitMaskImage: 'radial-gradient(circle, transparent 40%, black 60%)', maskImage: 'radial-gradient(circle, transparent 40%, black 60%)' }}
+              className="flex h-11 w-11 items-center justify-center rounded-full transition-colors hover:text-[var(--color-sun)] border-2"
+              style={{ borderImage: 'linear-gradient(90deg, #12a150 0 33.33%, #ffcd00 33.33% 66.66%, #e0342b 66.66% 100%) 1', backgroundColor: 'white', color: '#083d21' }}
             >
               <WhatsAppIcon size={34} />
             </a>
