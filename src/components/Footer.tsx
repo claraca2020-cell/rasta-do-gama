@@ -5,6 +5,7 @@ import { INSTAGRAM_HANDLE, INSTAGRAM_URL, WHATSAPP_DISPLAY, whatsappLink } from 
 import { Link } from '../lib/Link'
 import { InstagramIcon, WhatsAppIcon } from './SocialIcons'
 import { INSTITUTIONAL_LINKS } from '../lib/nav'
+import logoPapagaio from '../assets/brand/logo-papagaio-sm.webp'
 import { Wordmark } from './Wordmark'
 
 function Column({ title, links }: { title: string; links: { label: string; href: string }[] }) {
@@ -24,10 +25,42 @@ function Column({ title, links }: { title: string; links: { label: string; href:
   )
 }
 
+// Rodapé do celular: igual ao do site da Saúde Fit — logo à esquerda, Instagram e WhatsApp no meio,
+// assinatura à direita e o copyright centralizado embaixo.
+function MobileFooter() {
+  return (
+    <div className="border-t border-white/10 px-5 pt-9 pb-24 md:hidden">
+      <div className="grid grid-cols-[1fr_auto_1fr] items-center">
+        <Link to="/" className="justify-self-start" aria-label="Rasta do Gama — página inicial">
+          <img src={logoPapagaio} alt="" width={166} height={180} loading="lazy" className="h-14 w-auto" />
+        </Link>
+        <div className="flex items-center gap-5">
+          <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" aria-label={`Instagram ${INSTAGRAM_HANDLE}`} className="flex h-11 w-11 items-center justify-center">
+            <InstagramIcon size={34} />
+          </a>
+          <a
+            href={whatsappLink('Olá, Rasta! Vim pelo site.')}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`WhatsApp ${WHATSAPP_DISPLAY}`}
+            onClick={() => trackEvent('whatsapp_click', { source: 'footer' })}
+            className="flex h-11 w-11 items-center justify-center"
+          >
+            <WhatsAppIcon size={34} />
+          </a>
+        </div>
+        <img src={assinaturaBranca} alt="Assinatura" width={1672} height={941} loading="lazy" decoding="async" className="h-14 w-auto justify-self-end" />
+      </div>
+      <p className="mt-7 text-center text-[0.72rem] text-white/60">© {new Date().getFullYear()} Movimento Rasta do Gama, Gama – DF</p>
+    </div>
+  )
+}
+
 export function Footer() {
   return (
     <footer className="bg-[var(--color-black)] text-white">
-      <div className="mx-auto grid max-w-[1200px] gap-8 px-5 py-10 md:grid-cols-[1.3fr_1fr_1fr_1fr] md:gap-12 md:py-12 md:px-10">
+      <MobileFooter />
+      <div className="mx-auto hidden max-w-[1200px] gap-8 px-5 py-10 md:grid md:grid-cols-[1.3fr_1fr_1fr_1fr] md:gap-12 md:py-12 md:px-10">
         <div>
           <Wordmark logoClassName="h-20" />
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/75">
@@ -50,7 +83,7 @@ export function Footer() {
           </div>
         </div>
       </div>
-      <div className="border-t border-white/10">
+      <div className="hidden border-t border-white/10 md:block">
         <div className="mx-auto flex max-w-[1200px] flex-col items-center justify-between gap-3 px-5 py-5 text-xs text-white/60 sm:flex-row md:px-10">
           <p>© {new Date().getFullYear()} Movimento Rasta do Gama · Gama – DF · Paz nos estádios</p>
           <img src={assinaturaBranca} alt="Assinatura" width={1672} height={941} loading="lazy" decoding="async" className="h-10 w-auto" />
