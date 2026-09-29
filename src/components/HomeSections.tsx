@@ -1,3 +1,9 @@
+import logoAudity from '../assets/partners/audity.webp'
+import logoGuaronha from '../assets/partners/bonde-guaronha.webp'
+import logoHonda from '../assets/partners/dr-honda.webp'
+import logoGamaStickers from '../assets/partners/gama-stickers.webp'
+import logoPlanaltour from '../assets/partners/planaltour.webp'
+import logoSebo from '../assets/partners/sebo-do-gama.webp'
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { ArrowRight, ChevronLeft, ChevronRight, HandHeart, Shirt, Volume2, VolumeX } from 'lucide-react'
 import logoPapagaio from '../assets/brand/logo-papagaio.webp'
@@ -481,15 +487,18 @@ export function SupportSection() {
 }
 
 /* ---------- Parceiros ---------- */
-const PARTNERS = [
-  'Audity Centro Auditivo',
-  'Dr. Honda',
-  'Sebo do Gama',
-  'Agência Planaltour',
-  'Bonde Guaronha',
-  'Gama Stickers',
-  'Cáritas Paroquial São José',
-  'Recanto Cristo Vivo',
+// Logos tiradas das artes de "Patrocinador oficial" que a Rasta postou no Instagram (e perfil da Gama Stickers),
+// convertidas para o mesmo cinza dos nomes. Quem ainda não tem logo aparece pelo nome.
+
+const PARTNERS: { name: string; logo?: string }[] = [
+  { name: 'Audity Centro Auditivo', logo: logoAudity },
+  { name: 'Dr. Honda', logo: logoHonda },
+  { name: 'Sebo do Gama', logo: logoSebo },
+  { name: 'Agência Planaltour', logo: logoPlanaltour },
+  { name: 'Bonde Guaronha', logo: logoGuaronha },
+  { name: 'Gama Stickers', logo: logoGamaStickers },
+  { name: 'Cáritas Paroquial São José' },
+  { name: 'Recanto Cristo Vivo' },
 ]
 
 export function Partners() {
@@ -498,10 +507,14 @@ export function Partners() {
       <div className="mx-auto max-w-[1100px] px-5 text-center md:px-10">
         <p className="eyebrow text-[var(--color-text-muted)]">Quem caminha com a gente</p>
         <h2 className="heading title-rule mt-3 text-4xl text-[var(--color-ink)] md:text-5xl">Nossos parceiros</h2>
-        <ul className="mt-8 grid grid-cols-2 gap-x-6 gap-y-6 sm:grid-cols-4 md:mt-10">
-          {PARTNERS.map((name) => (
-            <li key={name} className="heading text-xl text-[#4f5752] md:text-2xl">
-              {name}
+        <ul className="mt-8 grid grid-cols-2 items-center gap-x-6 gap-y-8 sm:grid-cols-4 md:mt-10 md:gap-y-10">
+          {PARTNERS.map((p) => (
+            <li key={p.name} className="flex h-16 items-center justify-center md:h-20">
+              {p.logo ? (
+                <img src={p.logo} alt={p.name} loading="lazy" className="max-h-full max-w-[150px] object-contain md:max-w-[170px]" />
+              ) : (
+                <span className="heading text-xl text-[#4f5752] md:text-2xl">{p.name}</span>
+              )}
             </li>
           ))}
         </ul>
