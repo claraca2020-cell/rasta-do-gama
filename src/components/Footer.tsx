@@ -24,22 +24,10 @@ export function Footer() {
               target="_blank"
               rel="noreferrer"
               aria-label={`Instagram ${INSTAGRAM_HANDLE}`}
-              className="transition-opacity hover:opacity-80"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                width: 34,
-                height: 34,
-                background: 'linear-gradient(135deg, #12a150 0%, #ffcd00 50%, #e0342b 100%)',
-                borderRadius: '4px',
-                color: 'transparent',
-              }}
+              className="transition-opacity hover:opacity-80 inline-flex items-center justify-center"
+              style={{ background: 'transparent' }}
             >
-              <div style={{ position: 'absolute', opacity: 0 }}>
-                <InstagramIcon size={34} />
-              </div>
-              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="url(#instagramGradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="url(#instagramGradient)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <defs>
                   <linearGradient id="instagramGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stopColor="#12a150" />
@@ -47,9 +35,9 @@ export function Footer() {
                     <stop offset="100%" stopColor="#e0342b" />
                   </linearGradient>
                 </defs>
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                <circle cx="17.5" cy="6.5" r="1.5" />
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" />
+                <circle cx="12" cy="12" r="3" fill="none" />
+                <circle cx="17.5" cy="6.5" r="1.5" fill="none" />
               </svg>
             </a>
             <a
@@ -58,22 +46,10 @@ export function Footer() {
               rel="noreferrer"
               aria-label={`WhatsApp ${WHATSAPP_DISPLAY}`}
               onClick={() => trackEvent('whatsapp_click', { source: 'footer' })}
-              className="transition-opacity hover:opacity-80"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                width: 34,
-                height: 34,
-                background: 'linear-gradient(135deg, #12a150 0%, #ffcd00 50%, #e0342b 100%)',
-                borderRadius: '4px',
-                color: 'transparent',
-              }}
+              className="transition-opacity hover:opacity-80 inline-flex items-center justify-center"
+              style={{ background: 'transparent' }}
             >
-              <div style={{ position: 'absolute', opacity: 0 }}>
-                <WhatsAppIcon size={34} />
-              </div>
-              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="url(#whatsappGradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="url(#whatsappGradient)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <defs>
                   <linearGradient id="whatsappGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stopColor="#12a150" />
@@ -81,8 +57,9 @@ export function Footer() {
                     <stop offset="100%" stopColor="#e0342b" />
                   </linearGradient>
                 </defs>
-                <path d="M21 15a6 6 0 0 1-6 6H9a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2h6a6 6 0 0 1 6 6z" />
-                <path d="M12 9v2" />
+                <path d="M17 10.5a3 3 0 0 1 3 3V18a3 3 0 0 1-3 3h-8a3 3 0 0 1-3-3v-4.5a3 3 0 0 1 3-3" fill="none" />
+                <path d="M8 9l1.5-3a1 1 0 0 1 1-0.5h3a1 1 0 0 1 1 0.5L16 9" fill="none" />
+                <path d="M11 13v3" fill="none" />
               </svg>
             </a>
           </div>
