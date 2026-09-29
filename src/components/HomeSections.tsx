@@ -109,31 +109,27 @@ export function HeroSlideshow() {
       </div>
 
       <div className="absolute inset-x-0 bottom-8 flex items-center justify-center gap-1">
-        {SLIDES.map((slide, i) => {
-          const rastaColors = ['#12a150', '#ffcd00', '#e0342b'] // verde, amarelo, vermelho
-          const barColor = rastaColors[i] || rastaColors[0]
-          return (
-            <button
-              key={slide.src}
-              type="button"
-              onClick={() => goTo(i)}
-              aria-label={`Mostrar foto ${i + 1}`}
-              aria-current={i === active}
-              className="flex h-11 items-center justify-center px-1.5"
-            >
-              {/* barrinha que enche durante os 4 s da foto */}
-              <span className={`relative block h-1 overflow-hidden rounded-full transition-[width] duration-700 ${i === active ? 'w-12' : 'w-6'}`} style={{ backgroundColor: `${barColor}33` }}>
-                {i === active && (
-                  <span
-                    key={`${active}-${paused}`}
-                    className="hero-progress absolute inset-y-0 left-0 rounded-full"
-                    style={{ backgroundColor: barColor, animationDuration: `${SLIDE_MS}ms`, animationPlayState: paused ? 'paused' : 'running' }}
-                  />
-                )}
-              </span>
-            </button>
-          )
-        })}
+        {SLIDES.map((slide, i) => (
+          <button
+            key={slide.src}
+            type="button"
+            onClick={() => goTo(i)}
+            aria-label={`Mostrar foto ${i + 1}`}
+            aria-current={i === active}
+            className="flex h-11 items-center justify-center px-1.5"
+          >
+            {/* barrinha que enche durante os 4 s da foto */}
+            <span className={`relative block h-1 overflow-hidden rounded-full bg-white/40 transition-[width] duration-700 ${i === active ? 'w-12' : 'w-6'}`}>
+              {i === active && (
+                <span
+                  key={`${active}-${paused}`}
+                  className="hero-progress absolute inset-y-0 left-0 rounded-full bg-[var(--color-sun)]"
+                  style={{ animationDuration: `${SLIDE_MS}ms`, animationPlayState: paused ? 'paused' : 'running' }}
+                />
+              )}
+            </span>
+          </button>
+        ))}
         <button
           type="button"
           onClick={() => setPaused((p) => !p)}
