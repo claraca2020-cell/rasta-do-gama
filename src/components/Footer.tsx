@@ -27,7 +27,7 @@ export function Footer() {
               className="transition-opacity hover:opacity-80 inline-flex items-center justify-center"
               style={{ background: 'transparent' }}
             >
-              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="url(#instagramGradient)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="url(#instagramGradient)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                 <defs>
                   <linearGradient id="instagramGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stopColor="#12a150" />
@@ -35,9 +35,9 @@ export function Footer() {
                     <stop offset="100%" stopColor="#e0342b" />
                   </linearGradient>
                 </defs>
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" />
-                <circle cx="12" cy="12" r="3" fill="none" />
-                <circle cx="17.5" cy="6.5" r="1.5" fill="none" />
+                <rect x="2" y="2" width="20" height="20" rx="4.5" ry="4.5" />
+                <circle cx="12" cy="12" r="3" />
+                <circle cx="17.5" cy="6.5" r="1" />
               </svg>
             </a>
             <a
@@ -49,7 +49,7 @@ export function Footer() {
               className="transition-opacity hover:opacity-80 inline-flex items-center justify-center"
               style={{ background: 'transparent' }}
             >
-              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="url(#whatsappGradient)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="url(#whatsappGradient)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                 <defs>
                   <linearGradient id="whatsappGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stopColor="#12a150" />
@@ -57,9 +57,8 @@ export function Footer() {
                     <stop offset="100%" stopColor="#e0342b" />
                   </linearGradient>
                 </defs>
-                <path d="M17 10.5a3 3 0 0 1 3 3V18a3 3 0 0 1-3 3h-8a3 3 0 0 1-3-3v-4.5a3 3 0 0 1 3-3" fill="none" />
-                <path d="M8 9l1.5-3a1 1 0 0 1 1-0.5h3a1 1 0 0 1 1 0.5L16 9" fill="none" />
-                <path d="M11 13v3" fill="none" />
+                <path d="M21 15a6 6 0 0 0-6-6H9c-3.3 0-6 2.7-6 6v6c0 3.3 2.7 6 6 6h6a6 6 0 0 0 6-6v-6z" />
+                <path d="M9 10l6 4-6 4v-8z" />
               </svg>
             </a>
           </div>
