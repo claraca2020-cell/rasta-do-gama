@@ -17,8 +17,14 @@ import { ProductCard } from './ProductCard'
 
 /* ---------- Banner: 3 fotos passando a cada 4 s, com transição longa e suave ---------- */
 // pan: direção do movimento lento de cada foto (alterna para dar sensação de câmera andando)
-// Fotos em /public/hero, em 2 tamanhos (900 px no celular, 1672 px no computador). A 1ª tem preload no index.html.
-const heroSrc = (name: string) => ({ src: `/hero/${name}-1672.webp`, srcSet: `/hero/${name}-900.webp 900w, /hero/${name}-1672.webp 1672w` })
+// Fotos em /public/hero. Computador/tablet: foto horizontal (900/1672 px).
+// Celular: recorte vertical 3:5 feito para cada foto, enquadrando o assunto principal (bandeira, entrega do
+// algodão-doce, lanches). A 1ª tem preload no index.html.
+const heroSrc = (name: string) => ({
+  src: `/hero/${name}-1672.webp`,
+  srcSet: `/hero/${name}-900.webp 900w, /hero/${name}-1672.webp 1672w`,
+  mobile: `/hero/${name}-mobile.webp`,
+})
 const SLIDES = [
   { ...heroSrc('hero-bandeira'), alt: 'Torcida da Rasta com a bandeira do movimento na arquibancada do Bezerrão', position: 'center 40%', pan: '-1.5%' },
   { ...heroSrc('hero-algodao-doce'), alt: 'Integrante da Rasta entregando algodão-doce para uma criança em ação social', position: 'center 35%', pan: '1.5%' },
@@ -46,6 +52,8 @@ export function HeroSlideshow() {
 
   return (
     <section id="top" aria-roledescription="carrossel" aria-label="Fotos do Movimento Rasta do Gama" className="relative h-[88vh] min-h-[560px] overflow-hidden bg-[var(--color-black)] text-white md:h-screen md:max-h-[900px]">
+      {/* camada isolada: o empilhamento das fotos (z-index da troca) não passa por cima do texto */}
+      <div className="absolute inset-0 isolate">
       {SLIDES.map((slide, i) => (
         <div
           key={slide.src}
@@ -54,21 +62,25 @@ export function HeroSlideshow() {
           aria-hidden={i !== active}
         >
           {(i === 0 || loadRest) && (
-            <img
-              src={slide.src}
-              srcSet={slide.srcSet}
-              sizes="100vw"
-              width={1672}
-              height={941}
-              alt={slide.alt}
-              className="h-full w-full object-cover"
-              style={{ objectPosition: slide.position }}
-              fetchPriority={i === 0 ? 'high' : 'low'}
-              decoding={i === 0 ? 'sync' : 'async'}
-            />
+            <picture>
+              <source media="(max-width: 767px)" srcSet={slide.mobile} width={564} height={941} />
+              <img
+                src={slide.src}
+                srcSet={slide.srcSet}
+                sizes="100vw"
+                width={1672}
+                height={941}
+                alt={slide.alt}
+                className="hero-photo h-full w-full object-cover"
+                style={{ '--pos': slide.position } as CSSProperties}
+                fetchPriority={i === 0 ? 'high' : 'low'}
+                decoding={i === 0 ? 'sync' : 'async'}
+              />
+            </picture>
           )}
         </div>
       ))}
+      </div>
       <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/25 to-black/70" aria-hidden="true" />
 
       <div className="relative mx-auto flex h-full max-w-[1100px] flex-col items-center justify-center px-6 text-center">

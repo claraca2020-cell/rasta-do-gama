@@ -282,6 +282,16 @@ button {
   opacity: 1;
 }
 
+/* Foto do banner: enquadramento do computador vem de --pos; no celular o recorte vertical já vem centralizado */
+.hero-photo {
+  object-position: var(--pos, center);
+}
+@media (max-width: 767px) {
+  .hero-photo {
+    object-position: center;
+  }
+}
+
 /* Colagem da área social */
 .polaroid {
   background: #fff;

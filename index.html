@@ -44,7 +44,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- 1ª foto do banner: começa a baixar antes de tudo (maior elemento da tela) -->
-    <link rel="preload" as="image" href="/hero/hero-bandeira-1672.webp" imagesrcset="/hero/hero-bandeira-900.webp 900w, /hero/hero-bandeira-1672.webp 1672w" imagesizes="100vw" fetchpriority="high" />
+    <link rel="preload" as="image" href="/hero/hero-bandeira-mobile.webp" media="(max-width: 767px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="/hero/hero-bandeira-1672.webp" imagesrcset="/hero/hero-bandeira-900.webp 900w, /hero/hero-bandeira-1672.webp 1672w" imagesizes="100vw" media="(min-width: 768px)" fetchpriority="high" />
     <!-- fontes sem bloquear a primeira pintura -->
     <link
       rel="stylesheet"
