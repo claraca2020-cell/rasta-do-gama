@@ -24,15 +24,33 @@ export function Footer() {
               target="_blank"
               rel="noreferrer"
               aria-label={`Instagram ${INSTAGRAM_HANDLE}`}
-              className="transition-opacity hover:opacity-80 inline-block"
+              className="transition-opacity hover:opacity-80"
               style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: 34,
+                height: 34,
                 background: 'linear-gradient(135deg, #12a150 0%, #ffcd00 50%, #e0342b 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
+                borderRadius: '4px',
+                color: 'transparent',
               }}
             >
-              <InstagramIcon size={34} />
+              <div style={{ position: 'absolute', opacity: 0 }}>
+                <InstagramIcon size={34} />
+              </div>
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="url(#instagramGradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <defs>
+                  <linearGradient id="instagramGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#12a150" />
+                    <stop offset="50%" stopColor="#ffcd00" />
+                    <stop offset="100%" stopColor="#e0342b" />
+                  </linearGradient>
+                </defs>
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <circle cx="17.5" cy="6.5" r="1.5" />
+              </svg>
             </a>
             <a
               href={whatsappLink('Olá, Rasta! Vim pelo site.')}
@@ -40,15 +58,32 @@ export function Footer() {
               rel="noreferrer"
               aria-label={`WhatsApp ${WHATSAPP_DISPLAY}`}
               onClick={() => trackEvent('whatsapp_click', { source: 'footer' })}
-              className="transition-opacity hover:opacity-80 inline-block"
+              className="transition-opacity hover:opacity-80"
               style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: 34,
+                height: 34,
                 background: 'linear-gradient(135deg, #12a150 0%, #ffcd00 50%, #e0342b 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
+                borderRadius: '4px',
+                color: 'transparent',
               }}
             >
-              <WhatsAppIcon size={34} />
+              <div style={{ position: 'absolute', opacity: 0 }}>
+                <WhatsAppIcon size={34} />
+              </div>
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="url(#whatsappGradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <defs>
+                  <linearGradient id="whatsappGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#12a150" />
+                    <stop offset="50%" stopColor="#ffcd00" />
+                    <stop offset="100%" stopColor="#e0342b" />
+                  </linearGradient>
+                </defs>
+                <path d="M21 15a6 6 0 0 1-6 6H9a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2h6a6 6 0 0 1 6 6z" />
+                <path d="M12 9v2" />
+              </svg>
             </a>
           </div>
           {/* assinatura em amarelo: a imagem (recortada, sem bordas vazias) vira máscara pintada com --color-sun */}
