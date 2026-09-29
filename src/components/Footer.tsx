@@ -19,7 +19,7 @@ export function Footer() {
             <Wordmark className="hidden md:flex" logoClassName="h-20" />
           </Link>
           <div className="flex items-center gap-5 md:gap-10">
-            <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" aria-label={`Instagram ${INSTAGRAM_HANDLE}`} className="flex h-11 w-11 items-center justify-center rounded-full transition-colors hover:text-[var(--color-sun)] border-2" style={{ borderColor: '#ffcd00', backgroundColor: 'transparent', color: 'white' }}>
+            <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" aria-label={`Instagram ${INSTAGRAM_HANDLE}`} className="flex h-11 w-11 items-center justify-center rounded-full transition-colors hover:text-white border-2" style={{ borderColor: '#083d21', backgroundColor: 'transparent', color: '#ffcd00' }}>
               <InstagramIcon size={34} />
             </a>
             <a
@@ -28,8 +28,8 @@ export function Footer() {
               rel="noreferrer"
               aria-label={`WhatsApp ${WHATSAPP_DISPLAY}`}
               onClick={() => trackEvent('whatsapp_click', { source: 'footer' })}
-              className="flex h-11 w-11 items-center justify-center rounded-full transition-colors hover:text-[var(--color-sun)] border-2"
-              style={{ borderColor: '#ffcd00', backgroundColor: 'transparent', color: 'white' }}
+              className="flex h-11 w-11 items-center justify-center rounded-full transition-colors hover:text-white border-2"
+              style={{ borderColor: '#083d21', backgroundColor: 'transparent', color: '#ffcd00' }}
             >
               <WhatsAppIcon size={34} />
             </a>
