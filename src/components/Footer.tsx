@@ -1,7 +1,6 @@
 import { trackEvent } from '../lib/analytics'
 import { INSTAGRAM_HANDLE, INSTAGRAM_URL, WHATSAPP_DISPLAY, whatsappLink } from '../lib/contact'
 import { Link } from '../lib/Link'
-import { InstagramIcon, WhatsAppIcon } from './SocialIcons'
 import assinaturaRecortada from '../assets/brand/assinatura-branca-trim.webp'
 import logoPapagaio from '../assets/brand/logo-papagaio-sm.webp'
 import { Wordmark } from './Wordmark'
