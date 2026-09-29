@@ -145,25 +145,25 @@ const NUMBERS = [
 
 export function AboutRasta() {
   return (
-    <section id="quem-somos" className="py-20 md:py-28">
+    <section id="quem-somos" className="section-y">
       <div className="mx-auto max-w-[1100px] px-5 text-center md:px-10">
         <p className="eyebrow text-[var(--color-text-muted)]">Quem somos</p>
         <h2 className="heading title-rule mt-3 text-4xl text-[var(--color-ink)] md:text-6xl">Mais que torcida, um movimento</h2>
-        <p className="mx-auto mt-8 max-w-3xl text-lg leading-relaxed text-[var(--color-text-muted)] md:text-xl">
+        <p className="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-[var(--color-text-muted)] md:text-xl">
           O <strong className="text-[var(--color-ink)]">Movimento Rasta do Gama</strong> nasceu na arquibancada Norte do Bezerrão para unir o
           amor pela Sociedade Esportiva do Gama aos valores da cultura reggae: <strong className="text-[var(--color-brand)]">igualdade, paz e amizade</strong>.
         </p>
       </div>
 
-      <div className="mx-auto mt-14 grid max-w-[1100px] md:grid-cols-2">
+      <div className="mx-auto mt-8 grid max-w-[1100px] md:mt-10 md:grid-cols-2">
         <img src={arquibancada} alt="Bandeiras e torcida do Gama na arquibancada" width={1100} height={619} className="h-72 w-full object-cover md:h-full" loading="lazy" />
-        <div className="relative overflow-hidden bg-[var(--color-brand)] px-7 py-10 text-white md:px-12 md:py-14">
+        <div className="relative overflow-hidden bg-[var(--color-brand)] px-6 py-8 text-white md:px-12 md:py-12">
           <img src={logoPapagaio} alt="" aria-hidden="true" width={590} height={640} className="pointer-events-none absolute -right-10 -bottom-10 h-auto w-56 opacity-15" />
           <p className="relative text-lg leading-relaxed">
             Somos um movimento popular e cultural de torcedores. Levamos música, arte, faixas e bandeiras para o estádio, não
             compactuamos com violência nem discriminação e transformamos a paixão pelo Gama em ação na comunidade.
           </p>
-          <dl className="relative mt-10 grid grid-cols-3 gap-4 border-t border-white/25 pt-8">
+          <dl className="relative mt-8 grid grid-cols-3 gap-4 border-t border-white/25 pt-6">
             {NUMBERS.map((n) => (
               <div key={n.label}>
                 <dt className="heading text-4xl text-[var(--color-sun)] md:text-5xl">{n.value}</dt>
@@ -171,7 +171,7 @@ export function AboutRasta() {
               </div>
             ))}
           </dl>
-          <Link to="/quem-somos" className="relative mt-10 inline-flex min-h-11 items-center gap-2 font-semibold text-white underline-offset-4 hover:underline">
+          <Link to="/quem-somos" className="relative mt-6 inline-flex min-h-11 items-center gap-2 font-semibold text-white underline-offset-4 hover:underline">
             Conheça nossa história <ArrowRight size={16} />
           </Link>
         </div>
@@ -267,17 +267,17 @@ const ACTIONS = [
 
 export function SocialArea() {
   return (
-    <section id="acao-social" className="relative overflow-hidden bg-[var(--color-bg-soft)] py-20 md:py-28">
+    <section id="acao-social" className="section-y relative overflow-hidden bg-[var(--color-bg-soft)]">
       <div className="mx-auto max-w-[1200px] px-5 md:px-10">
         <div className="text-center">
           <p className="eyebrow text-[var(--color-text-muted)]">Ação social</p>
           <h2 className="heading title-rule mt-3 text-4xl text-[var(--color-ink)] md:text-6xl">A paixão pelo Gama virando cuidado</h2>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-[var(--color-text-muted)]">
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-[var(--color-text-muted)]">
             Com a força da torcida e de parceiros, a Rasta leva alegria, doações e acolhimento para a comunidade do Gama e região.
           </p>
         </div>
 
-        <div className="mt-16 grid items-center gap-12 lg:grid-cols-[1fr_340px_1fr] lg:gap-10">
+        <div className="mt-8 grid items-center gap-8 md:mt-10 lg:grid-cols-[1fr_340px_1fr] lg:gap-10">
           <div className="order-2 grid grid-cols-2 gap-6 lg:order-1 lg:grid-cols-1 lg:gap-10">
             {LEFT_PHOTOS.map((photo) => (
               <Polaroid key={photo.caption} photo={photo} />
@@ -294,7 +294,7 @@ export function SocialArea() {
         </div>
 
         {/* 2 × 2 no celular e tablet, 4 lado a lado no computador; cartões com a mesma altura em cada linha */}
-        <ol className="mt-16 grid grid-cols-2 gap-3 sm:gap-4 md:mt-20 lg:grid-cols-4">
+        <ol className="mt-8 grid grid-cols-2 gap-3 sm:gap-4 md:mt-10 lg:grid-cols-4">
           {ACTIONS.map((action) => (
             <li
               key={action.title}
@@ -323,7 +323,7 @@ const PILLARS = [
 
 export function HowWeAct() {
   return (
-    <section id="como-atuamos" className="py-20 md:py-28">
+    <section id="como-atuamos" className="section-y">
       <div className="mx-auto grid max-w-[1200px] gap-10 px-5 md:px-10 lg:grid-cols-[0.8fr_2fr] lg:items-end">
         <div>
           <p className="eyebrow text-[var(--color-text-muted)]">Como atuamos</p>
@@ -359,9 +359,9 @@ export function HowWeAct() {
 const SHOWCASE = PRODUCTS.filter((p) => p.images.length > 0)
 const SHOWCASE_LOOK = [
   { rotate: '-4deg', offset: 'lg:mt-0' },
-  { rotate: '3deg', offset: 'lg:mt-14' },
+  { rotate: '3deg', offset: 'lg:mt-10' },
   { rotate: '-2deg', offset: 'lg:mt-4' },
-  { rotate: '4deg', offset: 'lg:mt-16' },
+  { rotate: '4deg', offset: 'lg:mt-12' },
 ]
 
 function ShowcasePolaroid({ product, index }: { product: Product; index: number }) {
@@ -419,25 +419,25 @@ function ShowcasePolaroid({ product, index }: { product: Product; index: number 
 
 export function StoreSection() {
   return (
-    <section id="loja" className="relative overflow-hidden bg-[var(--color-brand)] py-20 text-white md:py-28">
+    <section id="loja" className="section-y relative overflow-hidden bg-[var(--color-brand)] text-white">
       <div className="pattern-dots absolute inset-0 opacity-40" aria-hidden="true" />
       <div className="relative mx-auto max-w-[1200px] px-5 md:px-10">
         <div className="text-center">
           <p className="eyebrow text-[var(--color-sun)]">Loja do movimento</p>
           <h2 className="heading title-rule mt-3 text-5xl md:text-6xl">Vista a causa</h2>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-white/85">
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-white/85">
             Camisas, bonés, casacos e acessórios levam a identidade da Rasta para a arquibancada e para a rua, e ajudam o
             movimento a seguir de pé.
           </p>
         </div>
 
-        <div className="mt-16 grid grid-cols-2 gap-x-5 gap-y-12 md:gap-x-8 lg:grid-cols-4">
+        <div className="mt-10 grid grid-cols-2 gap-x-5 gap-y-10 md:gap-x-8 lg:grid-cols-4">
           {SHOWCASE.map((product, i) => (
             <ShowcasePolaroid key={product.slug} product={product} index={i} />
           ))}
         </div>
 
-        <div className="mt-16 text-center">
+        <div className="mt-10 text-center md:mt-12">
           <Link to="/produtos" className="btn-sun inline-flex min-h-12 items-center gap-2 rounded px-8 text-sm">
             <Shirt size={17} /> Ver todos os produtos
           </Link>
@@ -450,8 +450,8 @@ export function StoreSection() {
 /* ---------- Apoie (como o "Ajude o Instituto" da referência) ---------- */
 export function SupportSection() {
   return (
-    <section id="apoie" className="relative">
-      <div className="mx-auto grid max-w-[1200px] items-center gap-8 bg-[var(--color-bg-soft)] px-6 py-14 md:grid-cols-[1.3fr_0.7fr] md:px-14 md:py-16">
+    <section id="apoie" className="section-y relative">
+      <div className="mx-auto grid max-w-[1200px] items-center gap-6 bg-[var(--color-bg-soft)] px-6 py-10 md:grid-cols-[1.3fr_0.7fr] md:px-14 md:py-12">
         <div>
           <p className="eyebrow text-[var(--color-text-muted)]">Como apoiar</p>
           <h2 className="heading mt-3 text-5xl leading-[0.95] text-[var(--color-ink)] md:text-6xl">
@@ -494,11 +494,11 @@ const PARTNERS = [
 
 export function Partners() {
   return (
-    <section id="parceiros" className="mt-20 bg-[#eeeeec] py-16 md:py-20">
+    <section id="parceiros" className="section-y bg-[#eeeeec]">
       <div className="mx-auto max-w-[1100px] px-5 text-center md:px-10">
         <p className="eyebrow text-[var(--color-text-muted)]">Quem caminha com a gente</p>
         <h2 className="heading title-rule mt-3 text-4xl text-[var(--color-ink)] md:text-5xl">Nossos parceiros</h2>
-        <ul className="mt-12 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4">
+        <ul className="mt-8 grid grid-cols-2 gap-x-6 gap-y-6 sm:grid-cols-4 md:mt-10">
           {PARTNERS.map((name) => (
             <li key={name} className="heading text-xl text-[#4f5752] md:text-2xl">
               {name}
@@ -516,7 +516,7 @@ export function ProductRail({ title, watermark, products, id }: { title: string;
   const scroll = (dir: number) => railRef.current?.scrollBy({ left: dir * railRef.current.clientWidth * 0.8, behavior: 'smooth' })
 
   return (
-    <section id={id} className="mx-auto max-w-[1200px] px-5 py-10 md:px-10 md:py-14">
+    <section id={id} className="section-y mx-auto max-w-[1200px] px-5 md:px-10">
       <div className="relative flex items-end justify-between gap-4">
         <Watermark>{watermark}</Watermark>
         <h2 className="heading relative text-3xl md:text-4xl">{title}</h2>

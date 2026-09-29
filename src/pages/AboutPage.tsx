@@ -20,11 +20,11 @@ export function AboutPage() {
     <>
       <PageBanner kicker="Institucional" title="Quem somos" />
 
-      <section className="mx-auto grid max-w-[1200px] gap-12 px-5 py-14 md:grid-cols-[1.2fr_0.8fr] md:px-10 md:py-20">
+      <section className="mx-auto grid max-w-[1200px] section-y gap-8 px-5 md:grid-cols-[1.2fr_0.8fr] md:gap-12 md:px-10">
         <div>
           <h2 className="heading title-rule title-rule-left text-5xl md:text-6xl">Mais que torcida, um movimento</h2>
 
-          <div className="mt-10 space-y-5 leading-relaxed">
+          <div className="mt-6 space-y-4 leading-relaxed">
             <p>
               O <strong>Movimento Rasta do Gama</strong> é um movimento popular e cultural de torcedores da Sociedade Esportiva do
               Gama. Une o amor pelo clube aos valores da cultura reggae: <strong>igualdade, paz e amizade</strong>.
@@ -59,20 +59,20 @@ export function AboutPage() {
           </div>
         </div>
 
-        <div className="md:pt-24">
+        <div className="md:pt-16">
           <div className="rounded-2xl bg-[var(--color-brand)] p-6 shadow-[0_20px_40px_rgba(8,61,33,0.25)]">
             <img src={adesivosArte} alt="Integrantes da Rasta com a bandeira Igualdade, Paz e Amizade" className="w-full rounded-lg" loading="lazy" />
           </div>
         </div>
       </section>
 
-      <section id="acoes-sociais" className="bg-[var(--color-black)] py-16 text-white md:py-20">
+      <section id="acoes-sociais" className="section-y bg-[var(--color-black)] text-white">
         <div className="mx-auto max-w-[1200px] px-5 md:px-10">
           <div className="relative">
             <Watermark dark>Corrente do bem</Watermark>
             <h2 className="heading relative text-2xl md:text-3xl">Ações sociais</h2>
           </div>
-          <ul className="mt-10 divide-y divide-white/15 border-y border-white/15">
+          <ul className="mt-8 divide-y divide-white/15 border-y border-white/15">
             {ACTIONS.map((action) => (
               <li key={action.text} className="grid gap-1 py-5 md:grid-cols-[160px_1fr] md:gap-8">
                 <span className="font-bold uppercase tracking-[0.08em] text-[var(--color-sun)]">{action.date}</span>
@@ -81,7 +81,7 @@ export function AboutPage() {
             ))}
           </ul>
 
-          <div className="mt-12 grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
+          <div className="mt-8 grid gap-6 md:mt-10 md:grid-cols-[1fr_auto] md:items-center">
             <div>
               <p className="heading text-lg">Patrocinadores do Dia das Crianças 2026</p>
               <ul className="mt-4 flex flex-wrap gap-2">

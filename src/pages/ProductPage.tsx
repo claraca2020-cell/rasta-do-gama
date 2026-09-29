@@ -29,7 +29,7 @@ export function ProductPage({ product }: { product: Product }) {
 
   return (
     <>
-      <section className="mx-auto max-w-[1200px] px-5 pt-8 pb-12 md:px-10 md:pt-12">
+      <section className="mx-auto max-w-[1200px] px-5 pt-6 pb-10 md:px-10 md:pt-10 md:pb-12">
         <nav aria-label="Você está em" className="flex flex-wrap items-center gap-1 text-sm text-[var(--color-text-muted)]">
           <Link to="/" className="hover:text-[var(--color-brand)]">Início</Link>
           <ChevronRight size={14} />

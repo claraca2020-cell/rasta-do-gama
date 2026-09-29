@@ -27,7 +27,7 @@ function Column({ title, links }: { title: string; links: { label: string; href:
 export function Footer() {
   return (
     <footer className="bg-[var(--color-black)] text-white">
-      <div className="mx-auto grid max-w-[1200px] gap-12 px-5 py-14 md:grid-cols-[1.3fr_1fr_1fr_1fr] md:px-10">
+      <div className="mx-auto grid max-w-[1200px] gap-8 px-5 py-10 md:grid-cols-[1.3fr_1fr_1fr_1fr] md:gap-12 md:py-12 md:px-10">
         <div>
           <Wordmark logoClassName="h-20" />
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/75">

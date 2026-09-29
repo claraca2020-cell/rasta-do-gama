@@ -19,7 +19,7 @@ export function ProductsPage({ search }: { search: string }) {
   return (
     <>
       <PageBanner kicker="Loja oficial" title="Ver produtos" />
-      <section className="mx-auto max-w-[1200px] px-5 py-12 md:px-10 md:py-16">
+      <section className="mx-auto max-w-[1200px] section-y px-5 md:px-10">
         <nav aria-label="Categorias" className="flex gap-2 overflow-x-auto pb-2">
           <Link to="/produtos" className={chip(!category && !query)} aria-current={!category && !query ? 'page' : undefined}>
             Todos
@@ -31,7 +31,7 @@ export function ProductsPage({ search }: { search: string }) {
           ))}
         </nav>
 
-        <div className="mt-10 flex items-baseline justify-between gap-4">
+        <div className="mt-8 flex items-baseline justify-between gap-4">
           <h2 className="heading text-xl md:text-2xl">{title}</h2>
           <p className="text-sm text-[var(--color-text-muted)]">
             {visible.length} {visible.length === 1 ? 'produto' : 'produtos'}

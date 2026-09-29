@@ -292,6 +292,16 @@ button {
   }
 }
 
+/* Espaçamento vertical padrão das seções: 48 px no celular, 64 px no computador */
+.section-y {
+  padding-block: 3rem;
+}
+@media (min-width: 768px) {
+  .section-y {
+    padding-block: 4rem;
+  }
+}
+
 /* Colagem da área social */
 .polaroid {
   background: #fff;

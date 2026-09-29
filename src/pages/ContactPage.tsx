@@ -10,14 +10,14 @@ export function ContactPage() {
   return (
     <>
       <PageBanner kicker="Institucional" title="Fale conosco" />
-      <section className="mx-auto grid max-w-[1200px] gap-10 px-5 py-14 md:grid-cols-[0.9fr_1.1fr] md:px-10 md:py-20">
+      <section className="mx-auto grid max-w-[1200px] section-y gap-8 px-5 md:grid-cols-[0.9fr_1.1fr] md:gap-10 md:px-10">
         <div>
           <h2 className="brush text-4xl md:text-5xl">Chama a Rasta!</h2>
           <p className="mt-4 text-[var(--color-text-muted)]">
             Pedidos, patrocínio de ações sociais, caravanas ou para fazer parte do movimento: o atendimento é pelo WhatsApp e pelo
             Instagram.
           </p>
-          <ul className="mt-10 space-y-6">
+          <ul className="mt-8 space-y-5">
             <li className="flex gap-4">
               <WhatsAppIcon className="mt-1 text-[var(--color-brand)]" size={24} />
               <div>

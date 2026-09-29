@@ -42,9 +42,9 @@ export function FaqPage() {
   return (
     <>
       <PageBanner kicker="Institucional" title="Dúvidas" />
-      <section className="mx-auto max-w-[900px] px-5 py-14 md:px-10 md:py-20">
+      <section className="mx-auto max-w-[900px] section-y px-5 md:px-10">
         {GROUPS.map((group) => (
-          <div key={group.id} id={group.id} className="mb-12 scroll-mt-32">
+          <div key={group.id} id={group.id} className="mb-8 scroll-mt-32 last:mb-0">
             <h2 className="heading border-b-4 border-[var(--color-black)] pb-3 text-xl md:text-2xl">{group.title}</h2>
             <div className="divide-y divide-[var(--color-border)]">
               {group.items.map((item) => (
