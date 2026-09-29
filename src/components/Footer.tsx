@@ -19,15 +19,20 @@ export function Footer() {
             <Wordmark className="hidden md:flex" logoClassName="h-20" />
           </Link>
           <div className="flex items-center gap-5 md:gap-10">
-            <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" aria-label={`Instagram ${INSTAGRAM_HANDLE}`} className="transition-opacity hover:opacity-80" style={{ background: 'linear-gradient(135deg, #12a150 0%, #ffcd00 50%, #e0342b 100%)', padding: '1px', borderRadius: '4px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
-              <div style={{ background: 'var(--color-black)', borderRadius: '3px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '32px', height: '32px' }}>
-                <InstagramIcon size={28} />
-              </div>
+            <svg width="0" height="0">
+              <defs>
+                <linearGradient id="rastaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#12a150" />
+                  <stop offset="50%" stopColor="#ffcd00" />
+                  <stop offset="100%" stopColor="#e0342b" />
+                </linearGradient>
+              </defs>
+            </svg>
+            <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" aria-label={`Instagram ${INSTAGRAM_HANDLE}`} className="transition-opacity hover:opacity-80">
+              <InstagramIcon size={34} style={{ stroke: 'url(#rastaGradient)' }} />
             </a>
-            <a href={whatsappLink('Olá, Rasta! Vim pelo site.')} target="_blank" rel="noreferrer" aria-label={`WhatsApp ${WHATSAPP_DISPLAY}`} onClick={() => trackEvent('whatsapp_click', { source: 'footer' })} className="transition-opacity hover:opacity-80" style={{ background: 'linear-gradient(135deg, #12a150 0%, #ffcd00 50%, #e0342b 100%)', padding: '1px', borderRadius: '4px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
-              <div style={{ background: 'var(--color-black)', borderRadius: '3px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '32px', height: '32px' }}>
-                <WhatsAppIcon size={28} />
-              </div>
+            <a href={whatsappLink('Olá, Rasta! Vim pelo site.')} target="_blank" rel="noreferrer" aria-label={`WhatsApp ${WHATSAPP_DISPLAY}`} onClick={() => trackEvent('whatsapp_click', { source: 'footer' })} className="transition-opacity hover:opacity-80">
+              <WhatsAppIcon size={34} style={{ fill: 'url(#rastaGradient)' }} />
             </a>
           </div>
           {/* assinatura em amarelo: a imagem (recortada, sem bordas vazias) vira máscara pintada com --color-sun */}
