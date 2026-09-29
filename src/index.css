@@ -1,0 +1,373 @@
+@import "tailwindcss";
+
+/* v4 — estrutura inspirada em loja de torcida organizada (referência: lojagavioes.com.br).
+   Preto e branco como base, verde Gama como cor da marca e a faixa tricolor rasta como assinatura. */
+@theme {
+  /* v5 (29/09/2026) — inspirado no Instituto Galo: base branca e limpa, verde como cor principal da marca,
+     amarelo para destacar (traços, botão de apoio, números). */
+  --color-bg-main: #ffffff;
+  --color-bg-soft: #f3f6f1;        /* faixas claras (como o bege do Instituto Galo) */
+  --color-black: #083d21;          /* verde profundo: cabeçalho sólido, rodapé, blocos escuros */
+  --color-ink: #10231a;            /* texto principal (~15:1 no branco) */
+  --color-text-muted: #4f6157;     /* texto secundário (~6.5:1 no branco) */
+  --color-card-ink: #10231a;
+  --color-brand: #0f6b3a;          /* verde Gama: cor principal */
+  --color-brand-deep: #0a4f2a;
+  --color-sun: #f5c518;            /* amarelo: destaques */
+  --color-alert: #f5c518;          /* selos em amarelo com texto verde */
+
+  --font-sans: "Jost", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Bebas Neue", "Jost", sans-serif;
+  --font-brush: "Permanent Marker", "Jost", cursive;
+}
+
+:root {
+  color-scheme: light;
+  --color-border: rgb(16 35 26 / 14%);
+  --header-h: 84px;
+  --motion-fast: 180ms;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 16px);
+}
+
+body {
+  min-width: 320px;
+  background-color: var(--color-bg-main);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+iframe {
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+section[id] {
+  scroll-margin-top: calc(var(--header-h) + 16px);
+}
+
+:where(a, button, input, iframe, [role="tab"]):focus-visible {
+  outline: 3px solid var(--color-brand);
+  outline-offset: 3px;
+}
+
+::selection {
+  background-color: var(--color-brand);
+  color: var(--color-black);
+}
+
+/* Tipografia */
+.brush {
+  font-family: var(--font-brush);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 0.95;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+/* traço amarelo sob títulos centralizados (como no Instituto Galo) */
+.title-rule::after {
+  display: block;
+  width: 56px;
+  height: 3px;
+  margin: 18px auto 0;
+  background: var(--color-sun);
+  content: "";
+}
+.title-rule-left::after {
+  margin-left: 0;
+}
+
+.menu-label {
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Texto em pincel enorme e apagado atrás dos títulos (como na referência) */
+.watermark {
+  font-family: var(--font-brush);
+  font-size: clamp(3rem, 9vw, 6.5rem);
+  line-height: 1;
+  color: rgb(16 35 26 / 6%);
+}
+.watermark-on-dark {
+  color: color-mix(in srgb, #fff 9%, transparent);
+}
+
+/* Cabeçalho: bloco preto inclinado à esquerda */
+.header-slab {
+  clip-path: polygon(0 0, 100% 0, calc(100% - 36px) 100%, 0 100%);
+}
+.header-rule {
+  height: 12px;
+  background:
+    linear-gradient(var(--color-black), var(--color-black)) top / 100% 5px no-repeat,
+    linear-gradient(#fff, #fff) bottom / 100% 3px no-repeat;
+}
+
+.rasta-stripe {
+  display: block;
+  height: 5px;
+  background: linear-gradient(90deg, #12a150 0 33.33%, #ffffff 33.33% 66.66%, var(--color-sun) 66.66% 100%);
+}
+
+/* Botões */
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-black {
+  background: var(--color-black);
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: background-color var(--motion-fast) ease;
+}
+.btn-black:hover {
+  background: var(--color-brand);
+  color: var(--color-black);
+}
+
+.btn-brand {
+  background: var(--color-brand);
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: background-color var(--motion-fast) ease;
+}
+.btn-brand:hover {
+  background: var(--color-brand-deep);
+}
+
+.btn-sun {
+  background: var(--color-sun);
+  color: var(--color-black);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: background-color var(--motion-fast) ease, transform var(--motion-fast) ease;
+}
+.btn-sun:hover {
+  background: #ffd84d;
+}
+
+.btn-line {
+  border: 2px solid var(--color-brand);
+  color: var(--color-brand);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: background-color var(--motion-fast) ease, color var(--motion-fast) ease;
+}
+.btn-line:hover {
+  background: var(--color-brand);
+  color: #fff;
+}
+
+.btn-ghost-light {
+  border: 2px solid rgb(255 255 255 / 85%);
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: background-color var(--motion-fast) ease, color var(--motion-fast) ease;
+}
+.btn-ghost-light:hover {
+  background: #fff;
+  color: var(--color-black);
+}
+
+/* Banner com fotos passando (v5.1 — troca mais fluida):
+   - a foto nova surge POR CIMA da anterior, que continua inteira embaixo → sem escurecer no meio da troca;
+   - fade longo com curva suave (2.4 s);
+   - zoom + deslize lento e contínuo (não "pula" quando a foto sai: a animação continua enquanto ela some). */
+.hero-slide {
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 2.4s cubic-bezier(0.45, 0, 0.25, 1);
+}
+.hero-slide.is-leaving {
+  z-index: 1;
+  opacity: 1;
+}
+.hero-slide.is-active {
+  z-index: 2;
+  opacity: 1;
+}
+.hero-slide img {
+  transform: scale(1.02);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+.hero-slide.is-active img,
+.hero-slide.is-leaving img {
+  animation: hero-drift 7.5s linear both;
+}
+@keyframes hero-drift {
+  from { transform: scale(1.02) translate3d(0, 0, 0); }
+  to { transform: scale(1.1) translate3d(var(--pan, 0), 0, 0); }
+}
+
+.hero-progress {
+  width: 0;
+  animation-name: hero-progress;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+@keyframes hero-progress {
+  to { width: 100%; }
+}
+
+/* Galeria do produto: troca com fade + leve aproximação */
+.gallery-slide {
+  opacity: 0;
+  transform: scale(0.97);
+  transition: opacity 450ms ease, transform 450ms ease;
+}
+.gallery-slide.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Vitrine polaroid: fotos dos produtos "presas" com fita adesiva */
+.tape {
+  position: relative;
+}
+.tape::before {
+  position: absolute;
+  z-index: 3;
+  top: -12px;
+  left: 50%;
+  width: 84px;
+  height: 24px;
+  background: color-mix(in srgb, var(--color-sun) 78%, transparent);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 15%);
+  content: "";
+  transform: translateX(-50%) rotate(-3deg);
+}
+.showcase-fade {
+  opacity: 0;
+  transition: opacity 1.4s cubic-bezier(0.45, 0, 0.25, 1);
+}
+.showcase-fade.is-active {
+  opacity: 1;
+}
+
+/* Colagem da área social */
+.polaroid {
+  background: #fff;
+  padding: 8px 8px 34px;
+  box-shadow: 0 14px 34px rgb(8 61 33 / 18%);
+  transition: transform 300ms ease;
+}
+.polaroid:hover {
+  transform: rotate(0deg) scale(1.03) !important;
+}
+
+/* Imagens */
+.product-photo {
+  background:
+    repeating-linear-gradient(135deg, rgb(8 61 33 / 6%) 0 12px, transparent 12px 24px),
+    #eef3ef;
+  color: #4d6655;
+}
+.product-photo-light {
+  background: #fff;
+}
+
+/* Imagem com contorno rasgado (máscara própria) */
+.torn-mask {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M4 6 L14 2 L22 7 L33 1 L45 5 L55 0 L66 6 L78 2 L88 7 L97 3 L99 15 L95 26 L100 38 L96 50 L99 62 L94 74 L99 86 L95 97 L84 94 L72 99 L61 95 L49 100 L38 94 L26 99 L15 95 L4 98 L1 86 L5 74 L0 62 L4 50 L1 38 L5 26 L0 14 Z' fill='black'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M4 6 L14 2 L22 7 L33 1 L45 5 L55 0 L66 6 L78 2 L88 7 L97 3 L99 15 L95 26 L100 38 L96 50 L99 62 L94 74 L99 86 L95 97 L84 94 L72 99 L61 95 L49 100 L38 94 L26 99 L15 95 L4 98 L1 86 L5 74 L0 62 L4 50 L1 38 L5 26 L0 14 Z' fill='black'/%3E%3C/svg%3E");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+.pattern-dots {
+  background-image: radial-gradient(rgb(255 255 255 / 16%) 1px, transparent 1.5px);
+  background-size: 18px 18px;
+}
+
+.rail {
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+}
+.rail::-webkit-scrollbar {
+  display: none;
+}
+.rail > * {
+  scroll-snap-align: start;
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 1100;
+  top: 0.75rem;
+  left: 0.75rem;
+  transform: translateY(-160%);
+  background: var(--color-brand);
+  color: var(--color-black);
+  padding: 0.75rem 1rem;
+  font-weight: 700;
+  transition: transform var(--motion-fast) ease;
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  /* O fade lento das fotos do banner foi pedido pelo cliente e não causa desconforto de movimento:
+     mantém a troca suave, mas desliga o zoom. */
+  .hero-slide {
+    transition-duration: 2.4s !important;
+  }
+  .hero-slide.is-active img,
+  .hero-slide.is-leaving img {
+    animation: none !important;
+  }
+  .hero-progress {
+    animation-duration: 4s !important;
+  }
+}
