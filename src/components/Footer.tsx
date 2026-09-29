@@ -1,7 +1,7 @@
 import { trackEvent } from '../lib/analytics'
 import { INSTAGRAM_HANDLE, INSTAGRAM_URL, WHATSAPP_DISPLAY, whatsappLink } from '../lib/contact'
 import { Link } from '../lib/Link'
-import { WhatsAppIcon } from './SocialIcons'
+import { InstagramIcon, WhatsAppIcon } from './SocialIcons'
 import assinaturaRecortada from '../assets/brand/assinatura-branca-trim.webp'
 import logoPapagaio from '../assets/brand/logo-papagaio-sm.webp'
 import { Wordmark } from './Wordmark'
@@ -19,39 +19,14 @@ export function Footer() {
             <Wordmark className="hidden md:flex" logoClassName="h-20" />
           </Link>
           <div className="flex items-center gap-5 md:gap-10">
-            <a
-              href={INSTAGRAM_URL}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={`Instagram ${INSTAGRAM_HANDLE}`}
-              className="transition-opacity hover:opacity-80 inline-flex items-center justify-center"
-              style={{
-                background: 'linear-gradient(135deg, #12a150 0%, #ffcd00 50%, #e0342b 100%)',
-                WebkitBackgroundClip: 'padding-box',
-                padding: '0.5px',
-                borderRadius: '6px',
-              }}
-            >
-              <div style={{ background: 'transparent', display: 'inline-flex' }}>
-                <img src="/icon-instagram-rasta.png" alt="Instagram" width="34" height="34" style={{ display: 'block' }} />
+            <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" aria-label={`Instagram ${INSTAGRAM_HANDLE}`} className="transition-opacity hover:opacity-80" style={{ background: 'linear-gradient(135deg, #12a150 0%, #ffcd00 50%, #e0342b 100%)', padding: '1px', borderRadius: '4px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ background: 'var(--color-black)', borderRadius: '3px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '32px', height: '32px' }}>
+                <InstagramIcon size={28} />
               </div>
             </a>
-            <a
-              href={whatsappLink('Olá, Rasta! Vim pelo site.')}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={`WhatsApp ${WHATSAPP_DISPLAY}`}
-              onClick={() => trackEvent('whatsapp_click', { source: 'footer' })}
-              className="transition-opacity hover:opacity-80 inline-flex items-center justify-center"
-              style={{
-                background: 'linear-gradient(135deg, #12a150 0%, #ffcd00 50%, #e0342b 100%)',
-                WebkitBackgroundClip: 'padding-box',
-                padding: '0.5px',
-                borderRadius: '6px',
-              }}
-            >
-              <div style={{ background: 'transparent', display: 'inline-flex' }}>
-                <img src="/icon-whatsapp-rasta.png" alt="WhatsApp" width="34" height="34" style={{ display: 'block' }} />
+            <a href={whatsappLink('Olá, Rasta! Vim pelo site.')} target="_blank" rel="noreferrer" aria-label={`WhatsApp ${WHATSAPP_DISPLAY}`} onClick={() => trackEvent('whatsapp_click', { source: 'footer' })} className="transition-opacity hover:opacity-80" style={{ background: 'linear-gradient(135deg, #12a150 0%, #ffcd00 50%, #e0342b 100%)', padding: '1px', borderRadius: '4px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ background: 'var(--color-black)', borderRadius: '3px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '32px', height: '32px' }}>
+                <WhatsAppIcon size={28} />
               </div>
             </a>
           </div>
