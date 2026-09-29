@@ -11,7 +11,7 @@ import { Wordmark } from './Wordmark'
 // Celular: espaço igual entre os três (justify-between). Computador: ícones centralizados na página.
 export function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-[var(--color-black)] text-white">
+    <footer className="bg-[var(--color-black)] text-white" style={{ borderTop: '3px solid #12a150', boxShadow: '0 -3px 0 #ffcd00, 0 -6px 0 #e0342b' }}>
       <div className="mx-auto max-w-[1100px] px-5 pt-9 pb-24 md:px-12 md:pt-12 md:pb-10">
         <div className="flex items-center justify-between md:grid md:grid-cols-[1fr_auto_1fr]">
           <Link to="/" aria-label="Rasta do Gama — página inicial" className="md:justify-self-start">

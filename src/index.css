@@ -128,14 +128,15 @@ section[id] {
 .header-rule {
   height: 12px;
   background:
-    linear-gradient(var(--color-black), var(--color-black)) top / 100% 5px no-repeat,
+    linear-gradient(90deg, #12a150 0 33.33%, #ffcd00 33.33% 66.66%, #e0342b 66.66% 100%) top / 100% 3px no-repeat,
+    linear-gradient(var(--color-black), var(--color-black)) center / 100% 4px no-repeat,
     linear-gradient(#fff, #fff) bottom / 100% 3px no-repeat;
 }
 
 .rasta-stripe {
   display: block;
   height: 5px;
-  background: linear-gradient(90deg, #12a150 0 33.33%, #ffffff 33.33% 66.66%, var(--color-sun) 66.66% 100%);
+  background: linear-gradient(90deg, #12a150 0 33.33%, #ffcd00 33.33% 66.66%, #e0342b 66.66% 100%);
 }
 
 /* Botões */
