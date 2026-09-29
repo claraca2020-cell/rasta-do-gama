@@ -27,7 +27,7 @@ export function Footer() {
               className="transition-opacity hover:opacity-80 inline-flex items-center justify-center"
               style={{ background: 'transparent' }}
             >
-              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="url(#instagramGradient)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="36" height="36" viewBox="0 0 256 256" fill="url(#instagramGradient)">
                 <defs>
                   <linearGradient id="instagramGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stopColor="#12a150" />
@@ -35,9 +35,7 @@ export function Footer() {
                     <stop offset="100%" stopColor="#e0342b" />
                   </linearGradient>
                 </defs>
-                <rect x="2" y="2" width="20" height="20" rx="4.5" ry="4.5" />
-                <circle cx="12" cy="12" r="3" />
-                <circle cx="17.5" cy="6.5" r="1" />
+                <path d="M128 24c28.7 0 32 0.1 43.3 0.6c11 0.5 18.5 2.3 25 4.9c6.8 2.6 12.6 6.2 18.1 11.7c5.5 5.5 9.1 11.3 11.7 18.1c2.6 6.5 4.4 14 4.9 25c0.5 11.3 0.6 14.6 0.6 43.3s-0.1 32-0.6 43.3c-0.5 11-2.3 18.5-4.9 25c-2.6 6.8-6.2 12.6-11.7 18.1c-5.5 5.5-11.3 9.1-18.1 11.7c-6.5 2.6-14 4.4-25 4.9c-11.3 0.5-14.6 0.6-43.3 0.6s-32-0.1-43.3-0.6c-11-0.5-18.5-2.3-25-4.9c-6.8-2.6-12.6-6.2-18.1-11.7c-5.5-5.5-9.1-11.3-11.7-18.1c-2.6-6.5-4.4-14-4.9-25c-0.5-11.3-0.6-14.6-0.6-43.3s0.1-32 0.6-43.3c0.5-11 2.3-18.5 4.9-25c2.6-6.8 6.2-12.6 11.7-18.1c5.5-5.5 11.3-9.1 18.1-11.7c6.5-2.6 14-4.4 25-4.9C96 24.1 99.3 24 128 24zm0 41.6c-23.5 0-42.7 19.2-42.7 42.7c0 23.5 19.2 42.7 42.7 42.7c23.5 0 42.7-19.2 42.7-42.7c0-23.5-19.2-42.7-42.7-42.7zm0 70.4c-15.3 0-27.7-12.4-27.7-27.7c0-15.3 12.4-27.7 27.7-27.7c15.3 0 27.7 12.4 27.7 27.7c0 15.3-12.4 27.7-27.7 27.7zm54.6-71.5c0 5.5-4.5 10-10 10c-5.5 0-10-4.5-10-10c0-5.5 4.5-10 10-10c5.5 0 10 4.5 10 10z" />
               </svg>
             </a>
             <a
@@ -49,7 +47,7 @@ export function Footer() {
               className="transition-opacity hover:opacity-80 inline-flex items-center justify-center"
               style={{ background: 'transparent' }}
             >
-              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="url(#whatsappGradient)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="36" height="36" viewBox="0 0 256 256" fill="url(#whatsappGradient)">
                 <defs>
                   <linearGradient id="whatsappGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stopColor="#12a150" />
@@ -57,8 +55,8 @@ export function Footer() {
                     <stop offset="100%" stopColor="#e0342b" />
                   </linearGradient>
                 </defs>
-                <path d="M21 15a6 6 0 0 0-6-6H9c-3.3 0-6 2.7-6 6v6c0 3.3 2.7 6 6 6h6a6 6 0 0 0 6-6v-6z" />
-                <path d="M9 10l6 4-6 4v-8z" />
+                <path d="M218 82q0 30.6-15 59t-41 49q-26 20-58 20a105 105 0 0 1-70-26L20 225l48-140A103 103 0 0 1 128 20q32 0 58 20t41 49q15 28.4 15 59z" />
+                <path fill="white" d="M96 100c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8-8-3.6-8-8zm32 0c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8-8-3.6-8-8zm32 0c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8-8-3.6-8-8z" />
               </svg>
             </a>
           </div>
