@@ -490,15 +490,17 @@ export function SupportSection() {
 // Logos tiradas das artes de "Patrocinador oficial" que a Rasta postou no Instagram (e perfil da Gama Stickers),
 // convertidas para o mesmo cinza dos nomes. Quem ainda não tem logo aparece pelo nome.
 
-const PARTNERS: { name: string; logo?: string }[] = [
-  { name: 'Audity Centro Auditivo', logo: logoAudity },
-  { name: 'Dr. Honda', logo: logoHonda },
-  { name: 'Sebo do Gama', logo: logoSebo },
-  { name: 'Agência Planaltour', logo: logoPlanaltour },
-  { name: 'Bonde Guaronha', logo: logoGuaronha },
-  { name: 'Gama Stickers', logo: logoGamaStickers },
+// Instagram de cada parceiro (os @ das artes de patrocínio da Rasta). Sem @ confirmado = sem link.
+const ig = (handle: string) => `https://www.instagram.com/${handle}/`
+const PARTNERS: { name: string; logo?: string; href?: string }[] = [
+  { name: 'Audity Centro Auditivo', logo: logoAudity, href: ig('auditycentroauditivo') },
+  { name: 'Dr. Honda', logo: logoHonda, href: ig('doctoor_honda') },
+  { name: 'Sebo do Gama', logo: logoSebo, href: ig('sebodogama') },
+  { name: 'Agência Planaltour', logo: logoPlanaltour, href: ig('agenciaplanaltour') },
+  { name: 'Bonde Guaronha', logo: logoGuaronha, href: ig('bondeguara') },
+  { name: 'Gama Stickers', logo: logoGamaStickers, href: ig('gamastickers') },
   { name: 'Cáritas Paroquial São José' },
-  { name: 'Recanto Cristo Vivo' },
+  { name: 'Recanto Cristo Vivo', href: ig('recantocristovivo') },
 ]
 
 export function Partners() {
@@ -510,11 +512,26 @@ export function Partners() {
         <ul className="mt-8 grid grid-cols-2 items-center gap-x-6 gap-y-8 sm:grid-cols-4 md:mt-10 md:gap-y-10">
           {PARTNERS.map((p) => (
             <li key={p.name} className="flex h-16 items-center justify-center md:h-20">
-              {p.logo ? (
-                <img src={p.logo} alt={p.name} loading="lazy" className="max-h-full max-w-[150px] object-contain md:max-w-[170px]" />
-              ) : (
-                <span className="heading text-xl text-[#4f5752] md:text-2xl">{p.name}</span>
-              )}
+              {(() => {
+                const content = p.logo ? (
+                  <img src={p.logo} alt={p.name} loading="lazy" className="max-h-full max-w-[150px] object-contain md:max-w-[170px]" />
+                ) : (
+                  <span className="heading text-xl text-[#4f5752] md:text-2xl">{p.name}</span>
+                )
+                return p.href ? (
+                  <a
+                    href={p.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${p.name} no Instagram (abre em nova aba)`}
+                    className="flex h-full items-center justify-center rounded opacity-90 transition hover:scale-105 hover:opacity-100"
+                  >
+                    {content}
+                  </a>
+                ) : (
+                  content
+                )
+              })()}
             </li>
           ))}
         </ul>
