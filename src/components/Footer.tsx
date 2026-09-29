@@ -5,6 +5,7 @@ import { INSTAGRAM_HANDLE, INSTAGRAM_URL, WHATSAPP_DISPLAY, whatsappLink } from 
 import { Link } from '../lib/Link'
 import { InstagramIcon, WhatsAppIcon } from './SocialIcons'
 import { INSTITUTIONAL_LINKS } from '../lib/nav'
+import assinaturaRecortada from '../assets/brand/assinatura-branca-trim.webp'
 import logoPapagaio from '../assets/brand/logo-papagaio-sm.webp'
 import { Wordmark } from './Wordmark'
 
@@ -30,8 +31,9 @@ function Column({ title, links }: { title: string; links: { label: string; href:
 function MobileFooter() {
   return (
     <div className="border-t border-white/10 px-5 pt-9 pb-24 md:hidden">
-      <div className="grid grid-cols-[1fr_auto_1fr] items-center">
-        <Link to="/" className="justify-self-start" aria-label="Rasta do Gama — página inicial">
+      {/* justify-between: o mesmo espaço entre logo ↔ ícones ↔ assinatura */}
+      <div className="flex items-center justify-between">
+        <Link to="/" aria-label="Rasta do Gama — página inicial">
           <img src={logoPapagaio} alt="" width={166} height={180} loading="lazy" className="h-14 w-auto" />
         </Link>
         <div className="flex items-center gap-5">
@@ -49,7 +51,17 @@ function MobileFooter() {
             <WhatsAppIcon size={34} />
           </a>
         </div>
-        <img src={assinaturaBranca} alt="Assinatura" width={1672} height={941} loading="lazy" decoding="async" className="h-14 w-auto justify-self-end" />
+        {/* assinatura em amarelo: a imagem (recortada, sem bordas vazias) vira máscara pintada com --color-sun */}
+        <span
+          role="img"
+          aria-label="Assinatura"
+          className="block h-12 bg-[var(--color-sun)]"
+          style={{
+            aspectRatio: '1346 / 828',
+            WebkitMask: `url(${assinaturaRecortada}) center / contain no-repeat`,
+            mask: `url(${assinaturaRecortada}) center / contain no-repeat`,
+          }}
+        />
       </div>
       <p className="mt-7 text-center text-[0.72rem] text-white/60">© {new Date().getFullYear()} Movimento Rasta do Gama, Gama – DF</p>
     </div>
