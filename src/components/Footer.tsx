@@ -11,7 +11,7 @@ import { Wordmark } from './Wordmark'
 // Celular: espaço igual entre os três (justify-between). Computador: ícones centralizados na página.
 export function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-[var(--color-black)] text-white" style={{ borderTopColor: '#ffcd00', borderTopWidth: '3px' }}>
+    <footer className="bg-[var(--color-black)] text-white" style={{ borderTop: '3px solid #12a150', boxShadow: '0 -3px 0 #ffcd00, 0 -6px 0 #e0342b' }}>
       <div className="mx-auto max-w-[1100px] px-5 pt-9 pb-24 md:px-12 md:pt-12 md:pb-10">
         <div className="flex items-center justify-between md:grid md:grid-cols-[1fr_auto_1fr]">
           <Link to="/" aria-label="Rasta do Gama — página inicial" className="md:justify-self-start">
@@ -19,7 +19,7 @@ export function Footer() {
             <Wordmark className="hidden md:flex" logoClassName="h-20" />
           </Link>
           <div className="flex items-center gap-5 md:gap-10">
-            <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" aria-label={`Instagram ${INSTAGRAM_HANDLE}`} className="flex h-11 w-11 items-center justify-center rounded-full transition-colors hover:text-white border-2" style={{ borderColor: '#083d21', backgroundColor: 'transparent', color: '#ffcd00' }}>
+            <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" aria-label={`Instagram ${INSTAGRAM_HANDLE}`} className="flex h-11 w-11 items-center justify-center rounded-full transition-colors hover:text-white border-2" style={{ borderImage: 'linear-gradient(90deg, #12a150 0 33.33%, #ffcd00 33.33% 66.66%, #e0342b 66.66% 100%) 1', backgroundColor: 'transparent', color: 'white' }}>
               <InstagramIcon size={34} />
             </a>
             <a
@@ -29,7 +29,7 @@ export function Footer() {
               aria-label={`WhatsApp ${WHATSAPP_DISPLAY}`}
               onClick={() => trackEvent('whatsapp_click', { source: 'footer' })}
               className="flex h-11 w-11 items-center justify-center rounded-full transition-colors hover:text-white border-2"
-              style={{ borderColor: '#083d21', backgroundColor: 'transparent', color: '#ffcd00' }}
+              style={{ borderImage: 'linear-gradient(90deg, #12a150 0 33.33%, #ffcd00 33.33% 66.66%, #e0342b 66.66% 100%) 1', backgroundColor: 'transparent', color: 'white' }}
             >
               <WhatsAppIcon size={34} />
             </a>
