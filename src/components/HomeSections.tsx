@@ -165,23 +165,23 @@ export function AboutRasta() {
         </p>
       </div>
 
-      <div className="mx-auto mt-8 grid max-w-[1100px] md:mt-10 md:grid-cols-2">
+      <div className="mx-auto mt-10 grid max-w-[1100px] md:mt-12 md:grid-cols-2">
         <img src={arquibancada} alt="Bandeiras e torcida do Gama na arquibancada" width={1100} height={619} className="h-72 w-full object-cover md:h-full" loading="lazy" />
-        <div className="relative overflow-hidden bg-[var(--color-brand)] px-6 py-8 text-white md:px-12 md:py-12">
-          <img src={logoPapagaio} alt="" aria-hidden="true" width={590} height={640} className="pointer-events-none absolute -right-10 -bottom-10 h-auto w-56 opacity-15" />
+        <div className="relative overflow-hidden bg-[var(--color-bg-soft)] px-6 py-8 text-[var(--color-ink)] md:px-12 md:py-12">
+          <img src={logoPapagaio} alt="" aria-hidden="true" width={590} height={640} className="pointer-events-none absolute -right-10 -bottom-10 h-auto w-56 opacity-[0.06]" />
           <p className="relative text-lg leading-relaxed">
             Somos um movimento popular e cultural de torcedores. Levamos música, arte, faixas e bandeiras para o estádio, não
             compactuamos com violência nem discriminação e transformamos a paixão pelo Gama em ação na comunidade.
           </p>
-          <dl className="relative mt-8 grid grid-cols-3 gap-4 border-t border-white/25 pt-6">
+          <dl className="relative mt-8 grid grid-cols-3 gap-4 border-t border-[var(--color-border)] pt-6">
             {NUMBERS.map((n) => (
               <div key={n.label}>
-                <dt className="heading text-4xl text-[var(--color-sun)] md:text-5xl">{n.value}</dt>
-                <dd className="mt-1 text-xs leading-snug text-white/85 md:text-sm">{n.label}</dd>
+                <dt className="heading text-4xl text-[var(--color-brand)] md:text-5xl">{n.value}</dt>
+                <dd className="mt-1 text-xs leading-snug text-[var(--color-text-muted)] md:text-sm">{n.label}</dd>
               </div>
             ))}
           </dl>
-          <Link to="/quem-somos" className="relative mt-6 inline-flex min-h-11 items-center gap-2 font-semibold text-white underline-offset-4 hover:underline">
+          <Link to="/quem-somos" className="relative mt-6 inline-flex min-h-11 items-center gap-2 font-semibold text-[var(--color-brand)] underline-offset-4 hover:underline">
             Conheça nossa história <ArrowRight size={16} />
           </Link>
         </div>
@@ -239,7 +239,7 @@ function SocialVideo() {
 
   return (
     <div className="relative mx-auto w-full max-w-[340px]">
-      <div className="overflow-hidden rounded-[28px] border-[10px] border-white bg-black shadow-[0_24px_60px_rgba(8,61,33,0.35)]">
+      <div className="overflow-hidden rounded-3xl border-[8px] border-white bg-black shadow-[0_16px_40px_rgba(8,61,33,0.16)]">
         <video
           ref={videoRef}
           src={inView ? '/media/acao-social.mp4' : undefined}
@@ -287,7 +287,7 @@ export function SocialArea() {
           </p>
         </div>
 
-        <div className="mt-8 grid items-center gap-8 md:mt-10 lg:grid-cols-[1fr_340px_1fr] lg:gap-10">
+        <div className="mt-10 grid items-center gap-8 md:mt-12 lg:grid-cols-[1fr_340px_1fr] lg:gap-12">
           <div className="order-2 grid grid-cols-2 gap-6 lg:order-1 lg:grid-cols-1 lg:gap-10">
             {LEFT_PHOTOS.map((photo) => (
               <Polaroid key={photo.caption} photo={photo} />
@@ -304,11 +304,11 @@ export function SocialArea() {
         </div>
 
         {/* 2 × 2 no celular e tablet, 4 lado a lado no computador; cartões com a mesma altura em cada linha */}
-        <ol className="mt-8 grid grid-cols-2 gap-3 sm:gap-4 md:mt-10 lg:grid-cols-4">
+        <ol className="mt-10 grid grid-cols-2 gap-3 sm:gap-4 md:mt-12 lg:grid-cols-4">
           {ACTIONS.map((action) => (
             <li
               key={action.title}
-              className="flex h-full flex-col border-t-4 border-[var(--color-brand)] bg-white p-4 shadow-[0_6px_20px_rgba(8,61,33,0.06)] sm:p-5"
+              className="flex h-full flex-col rounded-xl border-t-2 border-[var(--color-brand)] bg-white p-4 shadow-[0_4px_16px_rgba(8,61,33,0.045)] sm:p-5"
             >
               <p className="text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-[var(--color-brand)] sm:text-xs sm:tracking-[0.15em]">
                 {action.date}
@@ -341,9 +341,9 @@ export function HowWeAct() {
             Da arquibancada para a comunidade
           </h2>
         </div>
-        <div className="grid grid-cols-2 gap-1 md:grid-cols-4">
+        <div className="grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-4">
           {PILLARS.map((pillar) => (
-            <Link key={pillar.title} to={pillar.href} className="group relative block aspect-[3/4] overflow-hidden bg-black md:aspect-[3/5]">
+            <Link key={pillar.title} to={pillar.href} className="group relative block aspect-[3/4] overflow-hidden rounded-lg bg-black md:aspect-[3/5]">
               <img
                 src={pillar.img}
                 alt=""
@@ -429,26 +429,25 @@ function ShowcasePolaroid({ product, index }: { product: Product; index: number 
 
 export function StoreSection() {
   return (
-    <section id="loja" className="section-y relative overflow-hidden bg-[var(--color-brand)] text-white">
-      <div className="pattern-dots absolute inset-0 opacity-40" aria-hidden="true" />
+    <section id="loja" className="section-y relative overflow-hidden bg-[var(--color-bg-soft)] text-[var(--color-ink)]">
       <div className="relative mx-auto max-w-[1200px] px-5 md:px-10">
         <div className="text-center">
-          <p className="eyebrow text-[var(--color-sun)]">Loja do movimento</p>
-          <h2 className="heading title-rule mt-3 text-5xl md:text-6xl">Vista a causa</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-white/85">
+          <p className="eyebrow text-[var(--color-brand)]">Loja do movimento</p>
+          <h2 className="heading title-rule mt-3 text-5xl text-[var(--color-ink)] md:text-6xl">Vista a causa</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-[var(--color-text-muted)]">
             Camisas, bonés, casacos e acessórios levam a identidade da Rasta para a arquibancada e para a rua, e ajudam o
             movimento a seguir de pé.
           </p>
         </div>
 
-        <div className="mt-10 grid grid-cols-2 gap-x-5 gap-y-10 md:gap-x-8 lg:grid-cols-4">
+        <div className="mt-12 grid grid-cols-2 gap-x-5 gap-y-12 md:gap-x-8 lg:grid-cols-4">
           {SHOWCASE.map((product, i) => (
             <ShowcasePolaroid key={product.slug} product={product} index={i} />
           ))}
         </div>
 
         <div className="mt-10 text-center md:mt-12">
-          <Link to="/produtos" className="btn-sun inline-flex min-h-12 items-center gap-2 rounded px-8 text-sm">
+          <Link to="/produtos" className="btn-brand inline-flex min-h-12 items-center gap-2 rounded px-8 text-sm">
             <Shirt size={17} /> Ver todos os produtos
           </Link>
         </div>
@@ -461,7 +460,7 @@ export function StoreSection() {
 export function SupportSection() {
   return (
     <section id="apoie" className="section-y relative">
-      <div className="mx-auto grid max-w-[1200px] items-center gap-6 bg-[var(--color-bg-soft)] px-6 py-10 md:grid-cols-[1.3fr_0.7fr] md:px-14 md:py-12">
+      <div className="mx-auto grid max-w-[1200px] items-center gap-6 rounded-2xl bg-[var(--color-bg-soft)] px-6 py-10 md:grid-cols-[1.3fr_0.7fr] md:px-14 md:py-12">
         <div>
           <p className="eyebrow text-[var(--color-text-muted)]">Como apoiar</p>
           <h2 className="heading mt-3 text-5xl leading-[0.95] text-[var(--color-ink)] md:text-6xl">
@@ -509,7 +508,7 @@ const PARTNERS: { name: string; logo?: string; href?: string }[] = [
 
 export function Partners() {
   return (
-    <section id="parceiros" className="section-y bg-[#eeeeec]">
+    <section id="parceiros" className="section-y bg-[var(--color-bg-soft)]">
       <div className="mx-auto max-w-[1100px] px-5 text-center md:px-10">
         <p className="eyebrow text-[var(--color-text-muted)]">Quem caminha com a gente</p>
         <h2 className="heading title-rule mt-3 text-4xl text-[var(--color-ink)] md:text-5xl">Nossos parceiros</h2>

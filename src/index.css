@@ -23,7 +23,7 @@
 
 :root {
   color-scheme: light;
-  --color-border: rgb(16 35 26 / 14%);
+  --color-border: rgb(16 35 26 / 10%);
   --header-h: 84px;
   --motion-fast: 180ms;
 }
@@ -293,13 +293,13 @@ button {
   }
 }
 
-/* Espaçamento vertical padrão das seções: 48 px no celular, 64 px no computador */
+/* Mais respiro entre blocos, mantendo a rolagem nativa e acessível. */
 .section-y {
-  padding-block: 3rem;
+  padding-block: 4rem;
 }
 @media (min-width: 768px) {
   .section-y {
-    padding-block: 4rem;
+    padding-block: 5.5rem;
   }
 }
 
@@ -307,11 +307,11 @@ button {
 .polaroid {
   background: #fff;
   padding: 8px 8px 34px;
-  box-shadow: 0 14px 34px rgb(8 61 33 / 18%);
-  transition: transform 300ms ease;
+  box-shadow: 0 12px 32px rgb(8 61 33 / 10%);
+  transition: transform 300ms ease, box-shadow 300ms ease;
 }
 .polaroid:hover {
-  transform: rotate(0deg) scale(1.03) !important;
+  transform: rotate(0deg) translateY(-2px) scale(1.015) !important;
 }
 
 /* Imagens */
