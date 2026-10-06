@@ -22,12 +22,12 @@ import { ProductCard } from './ProductCard'
 
 /* ---------- Banner: 3 fotos passando a cada 4 s, com transição longa e suave ---------- */
 // pan: direção do movimento lento de cada foto (alterna para dar sensação de câmera andando)
-// Fotos em /public/hero. Computador/tablet: foto horizontal (900/1672 px).
+// Fotos em /public/hero. Computador/tablet: foto horizontal 16:9 (900/1672/2400 px, para telas grandes e retina).
 // Celular: recorte vertical 3:5 feito para cada foto, enquadrando o assunto principal (bandeira, entrega do
 // algodão-doce, lanches). A 1ª tem preload no index.html.
 const heroSrc = (name: string) => ({
   src: `/hero/${name}-1672.webp`,
-  srcSet: `/hero/${name}-900.webp 900w, /hero/${name}-1672.webp 1672w`,
+  srcSet: `/hero/${name}-900.webp 900w, /hero/${name}-1672.webp 1672w, /hero/${name}-2400.webp 2400w`,
   mobile: `/hero/${name}-mobile.webp`,
 })
 // 06/10/2026: saiu a foto da torcida com bandeiras ("não somos nós", pediu a Rasta). Entram as fotos que a Rasta mandou
@@ -70,7 +70,7 @@ export function HeroSlideshow() {
         >
           {(i === 0 || loadRest) && (
             <picture>
-              <source media="(max-width: 767px)" srcSet={slide.mobile} width={564} height={941} />
+              <source media="(max-width: 767px)" srcSet={slide.mobile} width={900} height={1500} />
               <img
                 src={slide.src}
                 srcSet={slide.srcSet}
@@ -165,7 +165,7 @@ export function AboutRasta() {
       </div>
 
       <div className="mx-auto mt-10 grid max-w-[1100px] md:mt-12 md:grid-cols-2">
-        <img src={quemSomosFoto} alt="Torcida da Rasta com a faixa RASTA, Igualdade, Paz e Amizade" width={1100} height={699} className="h-72 w-full object-cover md:h-full" loading="lazy" />
+        <img src={quemSomosFoto} alt="Torcida da Rasta com a faixa RASTA, Igualdade, Paz e Amizade" width={1448} height={921} className="h-72 w-full object-cover md:h-full" loading="lazy" />
         <div className="relative overflow-hidden bg-[var(--color-bg-soft)] px-6 py-8 text-[var(--color-ink)] md:px-12 md:py-12">
           <img src={logoPapagaio} alt="" aria-hidden="true" width={590} height={640} className="pointer-events-none absolute -right-10 -bottom-10 h-auto w-56 opacity-[0.06]" />
           <p className="relative text-lg leading-relaxed">
