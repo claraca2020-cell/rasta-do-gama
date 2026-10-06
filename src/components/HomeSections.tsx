@@ -1,23 +1,22 @@
-import logoAudity from '../assets/partners/audity.webp'
-import logoGuaronha from '../assets/partners/bonde-guaronha.webp'
-import logoHonda from '../assets/partners/dr-honda.webp'
-import logoGamaStickers from '../assets/partners/gama-stickers.webp'
-import logoPlanaltour from '../assets/partners/planaltour.webp'
-import logoSebo from '../assets/partners/sebo-do-gama.webp'
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
-import { ArrowRight, ChevronLeft, ChevronRight, HandHeart, Shirt, Volume2, VolumeX } from 'lucide-react'
+import { ArrowRight, ChevronLeft, ChevronRight, Droplet, GraduationCap, HandHeart, HeartPulse, PawPrint, Shirt, Ticket, Trees, Volume2, VolumeX } from 'lucide-react'
 import logoPapagaio from '../assets/brand/logo-papagaio.webp'
-import arquibancada from '../assets/photos/arquibancada-norte.webp'
 import heroAlgodao from '../assets/photos/hero-algodao-doce-sm.webp'
-import heroBandeira from '../assets/photos/hero-bandeira-sm.webp'
-import heroLanches from '../assets/photos/hero-lanches-sm.webp'
+import pilarArquibancada from '../assets/photos/pilar-arquibancada.webp'
+import pilarBaseGama from '../assets/photos/pilar-base-gama.webp'
+import pilarCaravanas from '../assets/photos/pilar-caravanas.webp'
+import pilarShows from '../assets/photos/pilar-shows-cultura.webp'
+import quemSomosFoto from '../assets/photos/quem-somos-rasta.webp'
 import socialBandeira from '../assets/photos/social-bandeira-rasta.webp'
 import socialLembrancinhas from '../assets/photos/social-lembrancinhas.webp'
 import socialUpa from '../assets/photos/social-upa.webp'
 import { PRODUCTS, formatPrice, type Product } from '../data/products'
+import { FIRST_ORDER_COUPON, SOCIAL_ACTIONS } from '../data/social'
 import { trackEvent } from '../lib/analytics'
 import { whatsappLink } from '../lib/contact'
 import { Link } from '../lib/Link'
+import logoMovimentoNacional from '../assets/partners/movimento-nacional.webp'
+import logoRastaCast from '../assets/partners/rasta-cast.webp'
 import { Watermark } from './Decor'
 import { ProductCard } from './ProductCard'
 
@@ -31,10 +30,12 @@ const heroSrc = (name: string) => ({
   srcSet: `/hero/${name}-900.webp 900w, /hero/${name}-1672.webp 1672w`,
   mobile: `/hero/${name}-mobile.webp`,
 })
+// 06/10/2026: saiu a foto da torcida com bandeiras ("não somos nós", pediu a Rasta). Entram as fotos que a Rasta mandou
+// no WhatsApp em 05/10 (originais no Obsidian: 18 RASTA/18,5 PASTA DO CLIENTE/2026-10-05 WhatsApp).
 const SLIDES = [
-  { ...heroSrc('hero-bandeira'), alt: 'Torcida da Rasta com a bandeira do movimento na arquibancada do Bezerrão', position: 'center 40%', pan: '-1.5%' },
-  { ...heroSrc('hero-algodao-doce'), alt: 'Integrante da Rasta entregando algodão-doce para uma criança em ação social', position: 'center 35%', pan: '1.5%' },
-  { ...heroSrc('hero-lanches'), alt: 'Integrantes da Rasta preparando lanches para uma ação social', position: 'center 30%', pan: '-1%' },
+  { ...heroSrc('hero-noite'), alt: 'Faixa Rasta do Gama, movimento popular e cultural, na arquibancada do Bezerrão em jogo à noite', position: 'center 70%', pan: '-1.5%' },
+  { ...heroSrc('hero-grupo'), alt: 'Integrantes da Rasta reunidos com a faixa do movimento', position: 'center 60%', pan: '1.5%' },
+  { ...heroSrc('hero-caravana'), alt: 'Caravana da Rasta com a faixa Rasta do Gama ao lado do ônibus', position: 'center 50%', pan: '-1%' },
 ]
 const SLIDE_MS = 4000
 
@@ -90,14 +91,12 @@ export function HeroSlideshow() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/25 to-black/70" aria-hidden="true" />
 
       <div className="relative mx-auto flex h-full max-w-[1100px] flex-col items-center justify-center px-6 text-center">
-        <p className="eyebrow text-[var(--color-sun)]">Movimento popular e cultural · Gama – DF</p>
+        <p className="eyebrow text-[var(--color-leaf)]">Movimento popular e cultural · Gama – DF</p>
         <h1 className="heading mt-4 text-[3.4rem] leading-[0.95] drop-shadow-[0_4px_18px_rgba(0,0,0,0.45)] sm:text-7xl md:text-[6.5rem]">
           Igualdade, paz
           <br />e amizade
         </h1>
-        <p className="mt-5 max-w-xl text-base text-white/90 md:text-lg">
-          Mais que torcida: cultura, respeito e ação social dentro e fora do Bezerrão.
-        </p>
+        <p className="brush mt-5 text-2xl text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] md:text-3xl">Liberdade para torcer</p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Link to="/#quem-somos" className="btn-sun flex min-h-12 items-center gap-2 rounded px-7 text-sm">
             Conheça o movimento <ArrowRight size={16} />
@@ -147,10 +146,10 @@ export function HeroSlideshow() {
 }
 
 /* ---------- Quem somos ---------- */
+// "5 marcas" saiu a pedido da Rasta (05/10/2026).
 const NUMBERS = [
   { value: '2 mil+', label: 'pessoas acompanham o movimento nas redes' },
   { value: '5', label: 'ações e campanhas sociais em 2026' },
-  { value: '5', label: 'marcas apoiaram o Dia das Crianças' },
 ]
 
 export function AboutRasta() {
@@ -158,30 +157,30 @@ export function AboutRasta() {
     <section id="quem-somos" className="section-y">
       <div className="mx-auto max-w-[1100px] px-5 text-center md:px-10">
         <p className="eyebrow text-[var(--color-text-muted)]">Quem somos</p>
-        <h2 className="heading title-rule mt-3 text-4xl text-[var(--color-ink)] md:text-6xl">Mais que torcida, um movimento</h2>
+        <h2 className="heading title-rule mt-3 text-4xl text-[var(--color-ink)] md:text-6xl">Movimento popular e cultural</h2>
         <p className="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-[var(--color-text-muted)] md:text-xl">
-          O <strong className="text-[var(--color-ink)]">Movimento Rasta do Gama</strong> nasceu na arquibancada Norte do Bezerrão para unir o
-          amor pela Sociedade Esportiva do Gama aos valores da cultura reggae: <strong className="text-[var(--color-brand)]">igualdade, paz e amizade</strong>.
+          A <strong className="text-[var(--color-ink)]">Rasta do Gama</strong> nasceu da conexão do amor pelo clube e os valores da cultura
+          reggae, sendo criada em 2026 por amigos e amantes da <strong className="text-[var(--color-brand)]">Sociedade Esportiva do Gama</strong>.
         </p>
       </div>
 
-      <div className="mx-auto mt-8 grid max-w-[1100px] md:mt-10 md:grid-cols-2">
-        <img src={arquibancada} alt="Bandeiras e torcida do Gama na arquibancada" width={1100} height={619} className="h-72 w-full object-cover md:h-full" loading="lazy" />
-        <div className="relative overflow-hidden bg-[var(--color-brand)] px-6 py-8 text-white md:px-12 md:py-12">
-          <img src={logoPapagaio} alt="" aria-hidden="true" width={590} height={640} className="pointer-events-none absolute -right-10 -bottom-10 h-auto w-56 opacity-15" />
+      <div className="mx-auto mt-10 grid max-w-[1100px] md:mt-12 md:grid-cols-2">
+        <img src={quemSomosFoto} alt="Torcida da Rasta com a faixa RASTA, Igualdade, Paz e Amizade" width={1100} height={699} className="h-72 w-full object-cover md:h-full" loading="lazy" />
+        <div className="relative overflow-hidden bg-[var(--color-bg-soft)] px-6 py-8 text-[var(--color-ink)] md:px-12 md:py-12">
+          <img src={logoPapagaio} alt="" aria-hidden="true" width={590} height={640} className="pointer-events-none absolute -right-10 -bottom-10 h-auto w-56 opacity-[0.06]" />
           <p className="relative text-lg leading-relaxed">
             Somos um movimento popular e cultural de torcedores. Levamos música, arte, faixas e bandeiras para o estádio, não
             compactuamos com violência nem discriminação e transformamos a paixão pelo Gama em ação na comunidade.
           </p>
-          <dl className="relative mt-8 grid grid-cols-3 gap-4 border-t border-white/25 pt-6">
+          <dl className="relative mt-8 grid grid-cols-2 gap-4 border-t border-[var(--color-border)] pt-6">
             {NUMBERS.map((n) => (
               <div key={n.label}>
-                <dt className="heading text-4xl text-[var(--color-sun)] md:text-5xl">{n.value}</dt>
-                <dd className="mt-1 text-xs leading-snug text-white/85 md:text-sm">{n.label}</dd>
+                <dt className="heading text-4xl text-[var(--color-brand)] md:text-5xl">{n.value}</dt>
+                <dd className="mt-1 text-xs leading-snug text-[var(--color-text-muted)] md:text-sm">{n.label}</dd>
               </div>
             ))}
           </dl>
-          <Link to="/quem-somos" className="relative mt-6 inline-flex min-h-11 items-center gap-2 font-semibold text-white underline-offset-4 hover:underline">
+          <Link to="/quem-somos" className="relative mt-6 inline-flex min-h-11 items-center gap-2 font-semibold text-[var(--color-brand)] underline-offset-4 hover:underline">
             Conheça nossa história <ArrowRight size={16} />
           </Link>
         </div>
@@ -193,13 +192,14 @@ export function AboutRasta() {
 /* ---------- Área social: vídeo no centro, fotos em volta ---------- */
 type Photo = { src: string; alt: string; caption: string; rotate: string; className?: string }
 
+// Legendas enviadas pela Rasta (05/10/2026).
 const LEFT_PHOTOS: Photo[] = [
-  { src: socialUpa, alt: 'Integrantes da Rasta em visita a uma UPA', caption: 'Visita à UPA', rotate: '-4deg', className: 'aspect-[3/4]' },
-  { src: heroAlgodao, alt: 'Algodão-doce sendo entregue a uma criança', caption: 'Algodão-doce pra criançada', rotate: '3deg', className: 'aspect-[4/3] lg:ml-10' },
+  { src: socialUpa, alt: 'Integrantes da Rasta entregando janta em uma UPA', caption: 'Entrega de janta em hospitais e UPA', rotate: '-4deg', className: 'aspect-[3/4]' },
+  { src: heroAlgodao, alt: 'Algodão-doce sendo entregue a uma criança na ação de Páscoa', caption: 'Ação social de Páscoa', rotate: '3deg', className: 'aspect-[4/3] lg:ml-10' },
 ]
 const RIGHT_PHOTOS: Photo[] = [
-  { src: socialBandeira, alt: 'Integrantes da Rasta segurando a bandeira Igualdade Paz Amizade', caption: 'Igualdade · Paz · Amizade', rotate: '3deg', className: 'aspect-[4/3]' },
-  { src: socialLembrancinhas, alt: 'Lembrancinhas embaladas com o selo da Rasta do Gama', caption: 'Lembrancinhas da Rasta', rotate: '-3deg', className: 'aspect-[3/4] lg:ml-8 lg:w-[80%]' },
+  { src: socialBandeira, alt: 'Integrantes da Rasta em ação de doação de agasalhos e roupas', caption: 'Doação de agasalhos e roupas para associações de acolhimento', rotate: '3deg', className: 'aspect-[4/3]' },
+  { src: socialLembrancinhas, alt: 'Lembrancinhas e ovos de Páscoa embalados com o selo da Rasta do Gama', caption: '+ de 200 ovos de Páscoa entregues', rotate: '-3deg', className: 'aspect-[3/4] lg:ml-8 lg:w-[80%]' },
 ]
 
 function Polaroid({ photo }: { photo: Photo }) {
@@ -239,7 +239,7 @@ function SocialVideo() {
 
   return (
     <div className="relative mx-auto w-full max-w-[340px]">
-      <div className="overflow-hidden rounded-[28px] border-[10px] border-white bg-black shadow-[0_24px_60px_rgba(8,61,33,0.35)]">
+      <div className="overflow-hidden rounded-3xl border-[8px] border-white bg-black shadow-[0_16px_40px_rgba(8,61,33,0.16)]">
         <video
           ref={videoRef}
           src={inView ? '/media/acao-social.mp4' : undefined}
@@ -252,7 +252,7 @@ function SocialVideo() {
           preload="none"
           width={400}
           height={600}
-          aria-label="Vídeo da ação social da Rasta do Gama com as crianças"
+          aria-label="Vídeo da ação social de Páscoa da Rasta do Gama com as crianças"
         />
       </div>
       <button
@@ -268,12 +268,6 @@ function SocialVideo() {
   )
 }
 
-const ACTIONS = [
-  { date: '10 out 2026', title: 'Dia das Crianças', text: 'Festa na Cáritas Paroquial São José, em Santa Maria.' },
-  { date: '15 set 2026', title: 'Roupas e agasalhos', text: 'Doação ao Recanto Cristo Vivo, em Valparaíso.' },
-  { date: 'Set 2026', title: 'Setembro Amarelo', text: 'Ligue 188: sua vida importa.' },
-  { date: '2026', title: 'Inclusão no estádio', text: 'Abafadores de ruído para pessoas autistas no Bezerrão.' },
-]
 
 export function SocialArea() {
   return (
@@ -287,7 +281,7 @@ export function SocialArea() {
           </p>
         </div>
 
-        <div className="mt-8 grid items-center gap-8 md:mt-10 lg:grid-cols-[1fr_340px_1fr] lg:gap-10">
+        <div className="mt-10 grid items-center gap-8 md:mt-12 lg:grid-cols-[1fr_340px_1fr] lg:gap-12">
           <div className="order-2 grid grid-cols-2 gap-6 lg:order-1 lg:grid-cols-1 lg:gap-10">
             {LEFT_PHOTOS.map((photo) => (
               <Polaroid key={photo.caption} photo={photo} />
@@ -303,12 +297,12 @@ export function SocialArea() {
           </div>
         </div>
 
-        {/* 2 × 2 no celular e tablet, 4 lado a lado no computador; cartões com a mesma altura em cada linha */}
-        <ol className="mt-8 grid grid-cols-2 gap-3 sm:gap-4 md:mt-10 lg:grid-cols-4">
-          {ACTIONS.map((action) => (
+        {/* 1 coluna no celular, 2 no tablet, 5 lado a lado no computador; cartões com a mesma altura em cada linha */}
+        <ol className="mt-10 grid gap-3 sm:grid-cols-2 sm:gap-4 md:mt-12 lg:grid-cols-5">
+          {SOCIAL_ACTIONS.map((action) => (
             <li
               key={action.title}
-              className="flex h-full flex-col border-t-4 border-[var(--color-brand)] bg-white p-4 shadow-[0_6px_20px_rgba(8,61,33,0.06)] sm:p-5"
+              className="flex h-full flex-col rounded-xl sm:last:col-span-2 lg:last:col-span-1 border-t-2 border-[var(--color-brand)] bg-white p-4 shadow-[0_4px_16px_rgba(8,61,33,0.045)] sm:p-5"
             >
               <p className="text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-[var(--color-brand)] sm:text-xs sm:tracking-[0.15em]">
                 {action.date}
@@ -325,10 +319,11 @@ export function SocialArea() {
 
 /* ---------- Como atuamos (grade de fotos, como os "Programas" do Instituto Galo) ---------- */
 const PILLARS = [
-  { title: 'Na arquibancada', img: heroBandeira, href: '/quem-somos', position: 'center 35%' },
-  { title: 'Crianças e famílias', img: heroAlgodao, href: '/#acao-social', position: 'center 30%' },
-  { title: 'Solidariedade', img: heroLanches, href: '/#acao-social', position: 'center 30%' },
-  { title: 'Cultura e identidade', img: socialBandeira, href: '/quem-somos', position: 'center 45%' },
+  // Fotos e legendas enviadas pela Rasta (05/10/2026).
+  { title: 'Na arquibancada', img: pilarArquibancada, href: '/quem-somos', position: 'center 60%' },
+  { title: 'Caravanas', img: pilarCaravanas, href: '/quem-somos', position: 'center 55%' },
+  { title: 'Base do Gama', img: pilarBaseGama, href: '/#acao-social', position: 'center 55%' },
+  { title: 'Shows e cultura', img: pilarShows, href: '/quem-somos', position: 'center 30%' },
 ]
 
 export function HowWeAct() {
@@ -341,9 +336,9 @@ export function HowWeAct() {
             Da arquibancada para a comunidade
           </h2>
         </div>
-        <div className="grid grid-cols-2 gap-1 md:grid-cols-4">
+        <div className="grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-4">
           {PILLARS.map((pillar) => (
-            <Link key={pillar.title} to={pillar.href} className="group relative block aspect-[3/4] overflow-hidden bg-black md:aspect-[3/5]">
+            <Link key={pillar.title} to={pillar.href} className="group relative block aspect-[3/4] overflow-hidden rounded-lg bg-black md:aspect-[3/5]">
               <img
                 src={pillar.img}
                 alt=""
@@ -429,28 +424,28 @@ function ShowcasePolaroid({ product, index }: { product: Product; index: number 
 
 export function StoreSection() {
   return (
-    <section id="loja" className="section-y relative overflow-hidden bg-[var(--color-brand)] text-white">
-      <div className="pattern-dots absolute inset-0 opacity-40" aria-hidden="true" />
+    <section id="loja" className="section-y relative overflow-hidden bg-[var(--color-bg-soft)] text-[var(--color-ink)]">
       <div className="relative mx-auto max-w-[1200px] px-5 md:px-10">
         <div className="text-center">
-          <p className="eyebrow text-[var(--color-sun)]">Loja do movimento</p>
-          <h2 className="heading title-rule mt-3 text-5xl md:text-6xl">Vista a causa</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-white/85">
+          <p className="eyebrow text-[var(--color-brand)]">Loja do movimento</p>
+          <h2 className="heading title-rule mt-3 text-5xl text-[var(--color-ink)] md:text-6xl">Vista a causa</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-[var(--color-text-muted)]">
             Camisas, bonés, casacos e acessórios levam a identidade da Rasta para a arquibancada e para a rua, e ajudam o
             movimento a seguir de pé.
           </p>
         </div>
 
-        <div className="mt-10 grid grid-cols-2 gap-x-5 gap-y-10 md:gap-x-8 lg:grid-cols-4">
+        <div className="mt-12 grid grid-cols-2 gap-x-5 gap-y-12 md:gap-x-8 lg:grid-cols-4">
           {SHOWCASE.map((product, i) => (
             <ShowcasePolaroid key={product.slug} product={product} index={i} />
           ))}
         </div>
 
-        <div className="mt-10 text-center md:mt-12">
-          <Link to="/produtos" className="btn-sun inline-flex min-h-12 items-center gap-2 rounded px-8 text-sm">
+        <div className="mt-10 flex flex-wrap justify-center gap-3 md:mt-12">
+          <Link to="/produtos" className="btn-brand inline-flex min-h-12 items-center gap-2 rounded px-8 text-sm">
             <Shirt size={17} /> Ver todos os produtos
           </Link>
+          <CouponButton source="loja-home" />
         </div>
       </div>
     </section>
@@ -461,7 +456,7 @@ export function StoreSection() {
 export function SupportSection() {
   return (
     <section id="apoie" className="section-y relative">
-      <div className="mx-auto grid max-w-[1200px] items-center gap-6 bg-[var(--color-bg-soft)] px-6 py-10 md:grid-cols-[1.3fr_0.7fr] md:px-14 md:py-12">
+      <div className="mx-auto grid max-w-[1200px] items-center gap-6 rounded-2xl bg-[var(--color-bg-soft)] px-6 py-10 md:grid-cols-[1.3fr_0.7fr] md:px-14 md:py-12">
         <div>
           <p className="eyebrow text-[var(--color-text-muted)]">Como apoiar</p>
           <h2 className="heading mt-3 text-5xl leading-[0.95] text-[var(--color-ink)] md:text-6xl">
@@ -472,14 +467,14 @@ export function SupportSection() {
           <ul className="mt-6 space-y-2 text-[var(--color-text-muted)]">
             <li><strong className="text-[var(--color-ink)]">Patrocine uma ação:</strong> a partir de R$ 50, com divulgação da sua marca nos perfis da Rasta.</li>
             <li><strong className="text-[var(--color-ink)]">Doe:</strong> roupas, agasalhos e itens para as ações com as crianças.</li>
-            <li><strong className="text-[var(--color-ink)]">Faça parte:</strong> venha para a arquibancada Norte e some com o movimento.</li>
+            <li><strong className="text-[var(--color-ink)]">Faça parte:</strong> venha torcer com a gente no Bezerrão e some com o movimento.</li>
           </ul>
           <a
             href={whatsappLink('Olá, Rasta! Vim pelo site e quero apoiar o movimento.')}
             target="_blank"
             rel="noreferrer"
             onClick={() => trackEvent('whatsapp_click', { source: 'apoie' })}
-            className="btn-sun mt-8 inline-flex min-h-12 items-center gap-2 rounded px-7 text-sm"
+            className="btn-brand mt-8 inline-flex min-h-12 items-center gap-2 rounded px-7 text-sm"
           >
             <HandHeart size={18} /> Quero apoiar
           </a>
@@ -490,52 +485,98 @@ export function SupportSection() {
   )
 }
 
-/* ---------- Parceiros ---------- */
-// Logos tiradas das artes de "Patrocinador oficial" que a Rasta postou no Instagram (e perfil da Gama Stickers),
-// convertidas para o mesmo cinza dos nomes. Quem ainda não tem logo aparece pelo nome.
+/* ---------- Cupom de primeira compra (pedido da Rasta em 05/10/2026: botão que abre o WhatsApp) ---------- */
+export function CouponButton({ source, className = '' }: { source: string; className?: string }) {
+  return (
+    <a
+      href={whatsappLink(`Olá, Rasta! É minha primeira compra e quero usar o cupom ${FIRST_ORDER_COUPON} (5% de desconto).`)}
+      target="_blank"
+      rel="noreferrer"
+      onClick={() => trackEvent('whatsapp_click', { source: `cupom-${source}` })}
+      className={`btn-line inline-flex min-h-12 items-center gap-2 rounded px-7 text-sm ${className}`}
+    >
+      <Ticket size={17} /> 5% off na 1ª compra
+    </a>
+  )
+}
 
-// Instagram de cada parceiro (os @ das artes de patrocínio da Rasta). Sem @ confirmado = sem link.
-const ig = (handle: string) => `https://www.instagram.com/${handle}/`
-const PARTNERS: { name: string; logo?: string; href?: string }[] = [
-  { name: 'Audity Centro Auditivo', logo: logoAudity, href: ig('auditycentroauditivo') },
-  { name: 'Dr. Honda', logo: logoHonda, href: ig('doctoor_honda') },
-  { name: 'Sebo do Gama', logo: logoSebo, href: ig('sebodogama') },
-  { name: 'Agência Planaltour', logo: logoPlanaltour, href: ig('agenciaplanaltour') },
-  { name: 'Bonde Guaronha', logo: logoGuaronha, href: ig('bondeguara') },
-  { name: 'Gama Stickers', logo: logoGamaStickers, href: ig('gamastickers') },
-  { name: 'Cáritas Paroquial São José' },
-  { name: 'Recanto Cristo Vivo', href: ig('recantocristovivo') },
+/* ---------- Próximos passos do movimento (texto da Rasta, 05/10/2026) ---------- */
+const NEXT_STEPS = [
+  { icon: Trees, title: 'Natureza', text: 'Limpezas de cachoeiras e áreas de preservação.' },
+  { icon: PawPrint, title: 'Animais', text: 'Ação social para ajudar cachorros e animais abandonados.' },
+  { icon: HeartPulse, title: 'Saúde', text: 'Grupos de atividades físicas e cuidados com a saúde.' },
+  { icon: Droplet, title: 'Doação de sangue', text: 'Mobilização para doar sangue nos hemocentros.' },
+  { icon: GraduationCap, title: 'Educação', text: 'Cursinhos gratuitos para jovens se prepararem para vestibular, Enem e PAS.' },
 ]
 
-export function Partners() {
+export function NextSteps() {
   return (
-    <section id="parceiros" className="section-y bg-[#eeeeec]">
-      <div className="mx-auto max-w-[1100px] px-5 text-center md:px-10">
-        <p className="eyebrow text-[var(--color-text-muted)]">Quem caminha com a gente</p>
-        <h2 className="heading title-rule mt-3 text-4xl text-[var(--color-ink)] md:text-5xl">Nossos parceiros</h2>
-        <ul className="mt-8 grid grid-cols-2 items-center gap-x-6 gap-y-8 sm:grid-cols-4 md:mt-10 md:gap-y-10">
-          {PARTNERS.map((p) => (
-            <li key={p.name} className="flex h-16 items-center justify-center md:h-20">
-              {(() => {
-                const content = p.logo ? (
-                  <img src={p.logo} alt={p.name} loading="lazy" className="max-h-full max-w-[150px] object-contain md:max-w-[170px]" />
-                ) : (
-                  <span className="heading text-xl text-[#4f5752] md:text-2xl">{p.name}</span>
-                )
-                return p.href ? (
-                  <a
-                    href={p.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`${p.name} no Instagram (abre em nova aba)`}
-                    className="flex h-full items-center justify-center rounded opacity-90 transition hover:scale-105 hover:opacity-100"
-                  >
-                    {content}
-                  </a>
-                ) : (
-                  content
-                )
-              })()}
+    <section id="proximos-passos" className="section-y">
+      <div className="mx-auto max-w-[1200px] px-5 md:px-10">
+        <div className="text-center">
+          <p className="eyebrow text-[var(--color-text-muted)]">Próximos passos</p>
+          <h2 className="heading title-rule mt-3 text-4xl text-[var(--color-ink)] md:text-6xl">O que vem por aí</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-[var(--color-text-muted)]">
+            A Rasta quer levar o mesmo cuidado para novas frentes, dentro e fora do estádio.
+          </p>
+        </div>
+        <ul className="mt-10 grid gap-3 sm:grid-cols-2 sm:gap-4 md:mt-12 lg:grid-cols-5">
+          {NEXT_STEPS.map(({ icon: Icon, title, text }) => (
+            <li key={title} className="flex h-full flex-col rounded-xl border border-[var(--color-border)] bg-white p-5 sm:last:col-span-2 lg:last:col-span-1">
+              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[var(--color-bg-soft)] text-[var(--color-brand)]" aria-hidden="true">
+                <Icon size={20} />
+              </span>
+              <p className="heading mt-4 text-2xl text-[var(--color-ink)]">{title}</p>
+              <p className="mt-1.5 text-sm leading-snug text-[var(--color-text-muted)]">{text}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )
+}
+
+/* ---------- Amigos e colaboradores (substitui a faixa de patrocinadores, a pedido da Rasta em 05/10/2026) ---------- */
+const FRIENDS = [
+  {
+    name: 'Rasta Cast',
+    logo: logoRastaCast,
+    text: 'Participação no podcast, conversando sobre ideologias com diferentes movimentos rastas.',
+    href: 'https://www.youtube.com/live/CxxhvI25WY4',
+    cta: 'Assistir no YouTube',
+  },
+  {
+    name: 'Movimento Nacional Rastas & Reggae',
+    logo: logoMovimentoNacional,
+    text: 'Participação no movimento nacional de reggae: de norte a sul, todos por uma missão, paz nos estádios.',
+    href: 'https://www.instagram.com/movrastasereggaebr/',
+    cta: 'Ver no Instagram',
+  },
+]
+
+export function Friends() {
+  return (
+    <section id="amigos" className="section-y bg-[var(--color-bg-soft)]">
+      <div className="mx-auto max-w-[1100px] px-5 md:px-10">
+        <div className="text-center">
+          <p className="eyebrow text-[var(--color-text-muted)]">Quem caminha com a gente</p>
+          <h2 className="heading title-rule mt-3 text-4xl text-[var(--color-ink)] md:text-5xl">Amigos e colaboradores</h2>
+        </div>
+        <ul className="mt-10 grid gap-4 md:grid-cols-2">
+          {FRIENDS.map((friend) => (
+            <li key={friend.name} className="flex flex-col rounded-xl bg-white p-6 shadow-[0_4px_16px_rgba(8,61,33,0.045)] md:p-8">
+              <img src={friend.logo} alt={`Logo ${friend.name}`} width={400} height={400} loading="lazy" className="mb-4 h-24 w-24 rounded-full object-cover" />
+              <p className="heading text-3xl text-[var(--color-ink)]">{friend.name}</p>
+              <p className="mt-2 flex-1 text-[var(--color-text-muted)]">{friend.text}</p>
+              <a
+                href={friend.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 inline-flex min-h-11 items-center gap-2 self-start font-semibold text-[var(--color-brand)] underline-offset-4 hover:underline"
+              >
+                {friend.cta} <ArrowRight size={16} />
+                <span className="sr-only">(abre em nova aba)</span>
+              </a>
             </li>
           ))}
         </ul>

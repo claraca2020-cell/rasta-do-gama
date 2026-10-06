@@ -46,7 +46,7 @@ export function ContactPage() {
               <MapPin className="mt-1 shrink-0" size={24} />
               <div>
                 <p className="heading text-sm">Onde estamos</p>
-                <p>Estádio Walmir Campelo Bezerra (Bezerrão), arquibancada Norte, Gama – DF</p>
+                <p>Estádio Walmir Campelo Bezerra (Bezerrão), Gama – DF</p>
               </div>
             </li>
           </ul>

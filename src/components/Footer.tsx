@@ -7,7 +7,7 @@ import logoPapagaio from '../assets/brand/logo-papagaio-sm.webp'
 import { Wordmark } from './Wordmark'
 
 // Rodapé no modelo do site da Saúde Fit (celular e computador): logo à esquerda, Instagram e WhatsApp no meio,
-// assinatura em amarelo à direita e o copyright centralizado embaixo.
+// assinatura em branco à direita e o copyright (com CNPJ) centralizado embaixo.
 // Celular: espaço igual entre os três (justify-between). Computador: ícones centralizados na página.
 export function Footer() {
   return (
@@ -26,11 +26,11 @@ export function Footer() {
               <WhatsAppIcon size={34} />
             </a>
           </div>
-          {/* assinatura em amarelo: a imagem (recortada, sem bordas vazias) vira máscara pintada com --color-sun */}
+          {/* assinatura: a imagem (recortada, sem bordas vazias) vira máscara pintada de branco */}
           <span
             role="img"
             aria-label="Assinatura"
-            className="block h-12 bg-[var(--color-sun)] md:h-20 md:justify-self-end"
+            className="block h-12 bg-white md:h-20 md:justify-self-end"
             style={{
               aspectRatio: '1346 / 828',
               WebkitMask: `url(${assinaturaRecortada}) center / contain no-repeat`,
@@ -40,6 +40,7 @@ export function Footer() {
         </div>
         <p className="mt-7 text-center text-[0.72rem] text-white/60 md:mt-8 md:text-sm">
           © {new Date().getFullYear()} Movimento Rasta do Gama, Gama – DF
+          <span className="mt-1 block">CNPJ 68.409.233/0001-86</span>
         </p>
       </div>
     </footer>

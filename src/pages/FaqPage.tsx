@@ -1,7 +1,7 @@
 import { PageBanner } from '../components/PageBanner'
 import { INSTAGRAM_HANDLE, WHATSAPP_DISPLAY } from '../lib/contact'
 
-// Respostas baseadas nos formulários e posts da Rasta. Entrega/retirada: confirmar com o cliente.
+// Respostas baseadas nos formulários e posts da Rasta; pagamento, entrega e cupom confirmados pela Rasta em 05/10/2026.
 const GROUPS = [
   {
     id: 'como-comprar',
@@ -19,20 +19,24 @@ const GROUPS = [
     id: 'pagamento',
     title: 'Formas de pagamento',
     items: [
-      { q: 'Quais são as formas de pagamento?', a: 'Pix (a chave é enviada pelo WhatsApp), débito presencialmente ou crédito presencialmente com a taxa da maquininha.' },
+      { q: 'Quais são as formas de pagamento?', a: 'Pix ou cartão de crédito. Para parcelar, consulte o valor da taxa pelo WhatsApp.' },
+      { q: 'Tem desconto na primeira compra?', a: 'Sim: 5% na primeira compra com o cupom RASTAPRIMEIRA. Toque no botão "5% off na 1ª compra" e a mensagem já chega pronta no WhatsApp.' },
       { q: 'Preciso enviar comprovante?', a: `Sim. Depois do Pix, envie o comprovante pelo WhatsApp ${WHATSAPP_DISPLAY}.` },
     ],
   },
   {
     id: 'entrega',
     title: 'Entrega e retirada',
-    items: [{ q: 'Como recebo meu produto?', a: 'A retirada ou entrega é combinada com a Rasta pelo WhatsApp depois do pedido.' }],
+    items: [
+      { q: 'Como recebo meu produto?', a: 'No Gama, você retira com integrantes do movimento ou recebe por entrega via Uber. Para fora do DF, enviamos pelos Correios com frete simbólico.' },
+      { q: 'Vocês entregam no Brasil todo?', a: 'Sim. Consulte o valor do frete pelo WhatsApp.' },
+    ],
   },
   {
     id: 'movimento',
     title: 'O movimento',
     items: [
-      { q: 'Como faço parte do movimento?', a: `Chame no WhatsApp ou no direct do Instagram ${INSTAGRAM_HANDLE} e venha para a arquibancada Norte do Bezerrão.` },
+      { q: 'Como faço parte do movimento?', a: `Chame no WhatsApp ou no direct do Instagram ${INSTAGRAM_HANDLE} e venha torcer com a gente no Bezerrão.` },
       { q: 'Como posso patrocinar uma ação social?', a: 'A partir de R$ 50 sua marca apoia a ação e recebe divulgação nos perfis da Rasta. Chame no WhatsApp para combinar.' },
     ],
   },

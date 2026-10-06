@@ -114,7 +114,7 @@ export function CartDrawer() {
                     Finalizar pedido no WhatsApp
                   </a>
                   <p className="mt-3 text-center text-xs text-[var(--color-text-muted)]">
-                    Pagamento: Pix · Débito presencial · Crédito presencial (+ taxa da maquininha)
+                    Pagamento: Pix ou cartão de crédito (parcelamento: consulte a taxa no WhatsApp) · Cupom RASTAPRIMEIRA: 5% na 1ª compra
                   </p>
                 </div>
               </>

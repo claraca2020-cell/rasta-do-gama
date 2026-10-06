@@ -1,18 +1,29 @@
+import adesivosPack from '../assets/products/adesivos-pack.webp'
 import adesivos1 from '../assets/products/adesivos-1.webp'
 import adesivos2 from '../assets/products/adesivos-2.webp'
 import adesivos3 from '../assets/products/adesivos-3.webp'
+import boneFive1 from '../assets/products/bone-five-1.webp'
+import boneTrucker1 from '../assets/products/bone-trucker-1.webp'
 import boneVerde1 from '../assets/products/bone-verde-1.webp'
 import boneVerde2 from '../assets/products/bone-verde-2.webp'
 import boneVerde3 from '../assets/products/bone-verde-3.webp'
-import casaco1 from '../assets/products/casaco-1.webp'
+import camisa1 from '../assets/products/camisa-1.webp'
+import camisa2 from '../assets/products/camisa-2.webp'
+import camisa3 from '../assets/products/camisa-3.webp'
+import casacoReal1 from '../assets/products/casaco-real-1.webp'
+import casacoReal2 from '../assets/products/casaco-real-2.webp'
+import casacoReal3 from '../assets/products/casaco-real-3.webp'
+import cordinha1 from '../assets/products/cordinha-1.webp'
+import faixaMao1 from '../assets/products/faixa-mao-1.webp'
 import casaco2 from '../assets/products/casaco-2.webp'
-import casaco3 from '../assets/products/casaco-3.webp'
 import meia1 from '../assets/products/meia-1.webp'
 import meia2 from '../assets/products/meia-2.webp'
 import meia3 from '../assets/products/meia-3.webp'
 
-// Fotos: vault "17,5 RASTA/000,1produtos" (convertidas para webp em src/assets/products).
-// Preços: Google Forms/posts da Rasta (28/09/2026). Sem preço confirmado => "Consulte" (não inventar).
+// Fotos: vault "17,5 RASTA/000,1produtos" e fotos reais enviadas pela Rasta em 05/10/2026
+// ("18 RASTA/18,5 PASTA DO CLIENTE/2026-10-05 WhatsApp"), convertidas para webp em src/assets/products.
+// Preços: Google Forms/posts da Rasta (28/09/2026), atualizados pela Rasta no WhatsApp em 05/10/2026.
+// Sem preço confirmado => "Consulte" (não inventar). Produtos sem foto aparecem só no catálogo até chegarem as fotos.
 export type ProductOption = { label: string; values: readonly string[] }
 
 export type Product = {
@@ -36,20 +47,21 @@ const TAMANHOS_ADULTO = ['P', 'M', 'G', 'GG', 'XG', '3G', '4G'] as const
 export const PRODUCTS: readonly Product[] = [
   {
     slug: 'bone-rasta-verde-papagaio',
-    name: 'Boné Rasta Verde Papagaio',
+    name: 'Boné Trucker Rasta Verde Papagaio',
     category: 'Bonés',
+    price: '64,90',
     unit: 'por unidade',
     badge: 'Novo',
     description: 'Boné verde do Gama com o papagaio rasta e o escrito RASTA na frente.',
     features: ['Verde do Gama', 'Arte RASTA com o papagaio rasta', 'Regulagem traseira com fivela'],
     options: [],
-    images: [boneVerde1, boneVerde3, boneVerde2],
+    images: [boneTrucker1, boneVerde1, boneVerde3, boneVerde2],
   },
   {
     slug: 'casaco-corta-vento-rasta',
     name: 'Casaco Corta-vento Rasta',
     category: 'Casacos',
-    price: '230,00',
+    price: '229,90',
     unit: 'por unidade',
     badge: '2ª remessa',
     description: 'Corta-vento verde com capuz, escudo na frente e a arte RASTA nas costas.',
@@ -58,45 +70,46 @@ export const PRODUCTS: readonly Product[] = [
       { label: 'Modelo', values: ['Masculino', 'Feminino', 'Infantil'] },
       { label: 'Tamanho', values: TAMANHOS_ADULTO },
     ],
-    images: [casaco2, casaco3, casaco1],
+    images: [casacoReal1, casacoReal2, casacoReal3, casaco2],
   },
   {
     slug: 'adesivos-rasta',
     name: 'Adesivos Rasta',
     category: 'Acessórios',
-    unit: 'por pacote',
-    description: 'Adesivos com as artes do movimento: Gama e o papagaio rasta, "Igualdade · Paz · Unidade", Rasta do Gama e Movimento Rasta.',
+    price: '9,99',
+    unit: 'pack com 4',
+    description: 'Pack com 4 adesivos com as artes do movimento: Gama e o papagaio rasta, "Igualdade · Paz · Unidade", Rasta do Gama e Movimento Rasta.',
     features: ['4 artes diferentes', 'Papagaio rasta e escudo do Gama', 'Para garrafa, notebook, carro…'],
     options: [],
-    images: [adesivos1, adesivos2, adesivos3],
+    images: [adesivosPack, adesivos1, adesivos2, adesivos3],
   },
   {
     slug: 'camisa-rasta',
     name: 'Camisa Rasta do Gama',
     category: 'Camisas',
-    price: '80,00',
+    price: '49,90',
     unit: 'por unidade',
     badge: 'Pré-venda',
-    description: 'Camisa oficial do Movimento Rasta do Gama, em manga ou regata.',
-    features: ['Manga ou regata', 'Corte normal ou BabyLook', 'Também em tamanho infantil'],
+    description: 'Camisa oficial do Movimento Rasta do Gama, em poliéster, em manga ou regata.',
+    features: ['Poliéster', 'Manga ou regata', 'Corte normal ou BabyLook', 'Também em tamanho infantil'],
     options: [
       { label: 'Modelo', values: ['Manga', 'Regata'] },
       { label: 'Corte', values: ['Normal', 'BabyLook'] },
       { label: 'Tamanho', values: [...TAMANHOS_ADULTO, 'Infantil'] },
     ],
-    images: [],
+    images: [camisa1, camisa2, camisa3],
   },
   {
     slug: 'bone-five-panel-rasta',
     name: 'Boné Five Panel Rasta',
     category: 'Bonés',
-    price: '80,00',
+    price: '79,90',
     unit: 'por unidade',
     badge: 'Reserva',
     description: 'Boné modelo five panel com estilo rasta.',
     features: ['Modelo five panel', 'Estilo rasta'],
     options: [],
-    images: [],
+    images: [boneFive1],
   },
   {
     slug: 'meia-rasta',
@@ -109,6 +122,28 @@ export const PRODUCTS: readonly Product[] = [
     features: ['100% algodão', 'Do 35 ao 43', 'Arte RASTA e escudo do Gama'],
     options: [],
     images: [meia1, meia3, meia2],
+  },
+  {
+    slug: 'cordinha-com-abridor-rasta',
+    name: 'Cordinha com Abridor Rasta',
+    category: 'Acessórios',
+    price: '19,99',
+    unit: 'por unidade',
+    description: 'Cordinha com abridor de garrafa com a identidade da Rasta do Gama.',
+    features: ['Com abridor de garrafa'],
+    options: [],
+    images: [cordinha1],
+  },
+  {
+    slug: 'faixa-de-mao-rasta',
+    name: 'Faixa de Mão Rasta',
+    category: 'Acessórios',
+    price: '14,99',
+    unit: 'por unidade',
+    description: 'Faixa de mão com as cores e a identidade da Rasta do Gama.',
+    features: ['Para levar ao estádio'],
+    options: [],
+    images: [faixaMao1],
   },
 ]
 

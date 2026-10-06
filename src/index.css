@@ -4,7 +4,8 @@
    Preto e branco como base, verde Gama como cor da marca e a faixa tricolor rasta como assinatura. */
 @theme {
   /* v5 (29/09/2026) — inspirado no Instituto Galo: base branca e limpa, verde como cor principal da marca,
-     amarelo para destacar (traços, botão de apoio, números). */
+     amarelo para destacar (traços, botão de apoio, números).
+     06/10/2026: a pedido da Rasta, foco em verde e branco; amarelo só em pequenos detalhes (faixa tricolor, contador, fita). */
   --color-bg-main: #ffffff;
   --color-bg-soft: #f3f6f1;        /* faixas claras (como o bege do Instituto Galo) */
   --color-black: #083d21;          /* verde profundo: cabeçalho sólido, rodapé, blocos escuros */
@@ -14,7 +15,8 @@
   --color-brand: #0f6b3a;          /* verde Gama: cor principal */
   --color-brand-deep: #0a4f2a;
   --color-sun: #f5c518;            /* amarelo: destaques */
-  --color-alert: #f5c518;          /* selos em amarelo com texto verde */
+  --color-alert: #dff2e5;          /* selos verde-claro com texto verde */
+  --color-leaf: #8fdcab;           /* verde-claro para destaques sobre fundo escuro */
 
   --font-sans: "Jost", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Bebas Neue", "Jost", sans-serif;
@@ -23,7 +25,7 @@
 
 :root {
   color-scheme: light;
-  --color-border: rgb(16 35 26 / 14%);
+  --color-border: rgb(16 35 26 / 10%);
   --header-h: 84px;
   --motion-fast: 180ms;
 }
@@ -170,7 +172,8 @@ button {
 }
 
 .btn-sun {
-  background: var(--color-sun);
+  /* botão de destaque branco com texto verde (o nome ficou da versão amarela) */
+  background: #fff;
   color: var(--color-black);
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -178,7 +181,7 @@ button {
   transition: background-color var(--motion-fast) ease, transform var(--motion-fast) ease;
 }
 .btn-sun:hover {
-  background: #ffd84d;
+  background: var(--color-alert);
 }
 
 .btn-line {
@@ -293,13 +296,13 @@ button {
   }
 }
 
-/* Espaçamento vertical padrão das seções: 48 px no celular, 64 px no computador */
+/* Mais respiro entre blocos, mantendo a rolagem nativa e acessível. */
 .section-y {
-  padding-block: 3rem;
+  padding-block: 4rem;
 }
 @media (min-width: 768px) {
   .section-y {
-    padding-block: 4rem;
+    padding-block: 5.5rem;
   }
 }
 
@@ -307,11 +310,11 @@ button {
 .polaroid {
   background: #fff;
   padding: 8px 8px 34px;
-  box-shadow: 0 14px 34px rgb(8 61 33 / 18%);
-  transition: transform 300ms ease;
+  box-shadow: 0 12px 32px rgb(8 61 33 / 10%);
+  transition: transform 300ms ease, box-shadow 300ms ease;
 }
 .polaroid:hover {
-  transform: rotate(0deg) scale(1.03) !important;
+  transform: rotate(0deg) translateY(-2px) scale(1.015) !important;
 }
 
 /* Imagens */

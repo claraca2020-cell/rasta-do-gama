@@ -37,7 +37,7 @@ export function Header({ overHero }: { overHero: boolean }) {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-[1000] text-white transition-[background-color,box-shadow] duration-300 ${
-        solid ? 'bg-[var(--color-black)] shadow-[0_6px_24px_rgba(0,0,0,0.18)]' : 'bg-gradient-to-b from-black/55 to-transparent'
+        solid ? 'bg-[var(--color-black)] shadow-[0_4px_18px_rgba(8,61,33,0.12)]' : 'bg-gradient-to-b from-black/55 to-transparent'
       }`}
     >
       <div className="mx-auto grid h-[84px] max-w-[1280px] grid-cols-[1fr_auto_1fr] items-center gap-4 px-5 md:px-10">

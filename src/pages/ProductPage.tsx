@@ -121,7 +121,7 @@ export function ProductPage({ product }: { product: Product }) {
             >
               Comprar agora pelo WhatsApp
             </a>
-            <p className="mt-4 text-center text-xs text-[var(--color-text-muted)]">Pix · Débito presencial · Crédito presencial (+ taxa da maquininha)</p>
+            <p className="mt-4 text-center text-xs text-[var(--color-text-muted)]">Pix ou cartão de crédito · Entrega no Gama ou envio para todo o Brasil · 5% na 1ª compra com o cupom RASTAPRIMEIRA</p>
           </div>
         </div>
       </section>
