@@ -7,6 +7,10 @@ import pilarBaseGama from '../assets/photos/pilar-base-gama.webp'
 import pilarCaravanas from '../assets/photos/pilar-caravanas.webp'
 import pilarShows from '../assets/photos/pilar-shows-cultura.webp'
 import quemSomosFoto from '../assets/photos/quem-somos-rasta.webp'
+import bezerraoNoite from '../assets/photos/bezerrao-noite.webp'
+import caravanaEstrada from '../assets/photos/caravana-estrada.webp'
+import caravanaOnibus from '../assets/photos/caravana-onibus.webp'
+import rastaReunida from '../assets/photos/rasta-reunida.webp'
 import socialBandeira from '../assets/photos/social-bandeira-rasta.webp'
 import socialLembrancinhas from '../assets/photos/social-lembrancinhas.webp'
 import socialUpa from '../assets/photos/social-upa.webp'
@@ -211,7 +215,7 @@ function Polaroid({ photo }: { photo: Photo }) {
   )
 }
 
-function SocialVideo() {
+function SocialVideo({ src, poster, label }: { src: string; poster: string; label: string }) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [muted, setMuted] = useState(true)
   const [inView, setInView] = useState(false)
@@ -242,8 +246,8 @@ function SocialVideo() {
       <div className="overflow-hidden rounded-3xl border-[8px] border-white bg-black shadow-[0_16px_40px_rgba(8,61,33,0.16)]">
         <video
           ref={videoRef}
-          src={inView ? '/media/acao-social.mp4' : undefined}
-          poster="/media/acao-social-poster.webp"
+          src={inView ? src : undefined}
+          poster={poster}
           className="aspect-[2/3] w-full object-cover"
           autoPlay
           muted
@@ -252,7 +256,7 @@ function SocialVideo() {
           preload="none"
           width={400}
           height={600}
-          aria-label="Vídeo da ação social de Páscoa da Rasta do Gama com as crianças"
+          aria-label={label}
         />
       </div>
       <button
@@ -288,7 +292,7 @@ export function SocialArea() {
             ))}
           </div>
           <div className="order-1 lg:order-2">
-            <SocialVideo />
+            <SocialVideo src="/media/acao-social.mp4" poster="/media/acao-social-poster.webp" label="Vídeo da ação social de Páscoa da Rasta do Gama com as crianças" />
           </div>
           <div className="order-3 grid grid-cols-2 gap-6 lg:grid-cols-1 lg:gap-10">
             {RIGHT_PHOTOS.map((photo) => (
@@ -317,11 +321,55 @@ export function SocialArea() {
   )
 }
 
+/* ---------- Caravanas: mesmo formato da área social (vídeo no centro, fotos em volta) ---------- */
+// Texto e vídeo enviados pela Rasta no WhatsApp (05/10/2026): "Caravanas, 'A onde o Gama for eu lá estou',
+// horas de viagem para apoiar nosso time do coração". Fotos da Rasta reunida, enviadas na mesma conversa.
+const CARAVAN_LEFT: Photo[] = [
+  { src: caravanaEstrada, alt: 'Integrantes da Rasta com a faixa do movimento ao lado do ônibus da caravana', caption: 'Pé na estrada', rotate: '-3deg', className: 'aspect-[3/4]' },
+  { src: caravanaOnibus, alt: 'Faixa Rasta do Gama estendida ao lado do ônibus da caravana', caption: 'Rumo ao jogo', rotate: '3deg', className: 'aspect-[4/3] lg:ml-10' },
+]
+const CARAVAN_RIGHT: Photo[] = [
+  { src: rastaReunida, alt: 'Integrantes da Rasta reunidos com a faixa do movimento', caption: 'A Rasta reunida', rotate: '3deg', className: 'aspect-[4/3]' },
+  { src: bezerraoNoite, alt: 'Faixa Movimento Rasta na arquibancada do Bezerrão em jogo à noite', caption: 'Noite de Bezerrão', rotate: '-3deg', className: 'aspect-[3/4] lg:ml-8 lg:w-[80%]' },
+]
+
+export function Caravans() {
+  return (
+    <section id="caravanas" className="section-y relative overflow-hidden">
+      <div className="mx-auto max-w-[1200px] px-5 md:px-10">
+        <div className="text-center">
+          <p className="eyebrow text-[var(--color-text-muted)]">Caravanas</p>
+          <h2 className="heading title-rule mt-3 text-4xl text-[var(--color-ink)] md:text-6xl">Aonde o Gama for, eu lá estou</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-[var(--color-text-muted)]">
+            Horas de viagem para apoiar nosso time do coração.
+          </p>
+        </div>
+
+        <div className="mt-10 grid items-center gap-8 md:mt-12 lg:grid-cols-[1fr_340px_1fr] lg:gap-12">
+          <div className="order-2 grid grid-cols-2 gap-6 lg:order-1 lg:grid-cols-1 lg:gap-10">
+            {CARAVAN_LEFT.map((photo) => (
+              <Polaroid key={photo.caption} photo={photo} />
+            ))}
+          </div>
+          <div className="order-1 lg:order-2">
+            <SocialVideo src="/media/caravanas.mp4" poster="/media/caravanas-poster.webp" label="Vídeo da caravana da Rasta do Gama: faixa RASTA no estádio" />
+          </div>
+          <div className="order-3 grid grid-cols-2 gap-6 lg:grid-cols-1 lg:gap-10">
+            {CARAVAN_RIGHT.map((photo) => (
+              <Polaroid key={photo.caption} photo={photo} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 /* ---------- Como atuamos (grade de fotos, como os "Programas" do Instituto Galo) ---------- */
 const PILLARS = [
   // Fotos e legendas enviadas pela Rasta (05/10/2026).
   { title: 'Na arquibancada', img: pilarArquibancada, href: '/quem-somos', position: 'center 60%' },
-  { title: 'Caravanas', img: pilarCaravanas, href: '/quem-somos', position: 'center 55%' },
+  { title: 'Caravanas', img: pilarCaravanas, href: '/#caravanas', position: 'center 55%' },
   { title: 'Base do Gama', img: pilarBaseGama, href: '/#acao-social', position: 'center 55%' },
   { title: 'Shows e cultura', img: pilarShows, href: '/quem-somos', position: 'center 30%' },
 ]
