@@ -1,13 +1,13 @@
 # Conexão com o Segundo Cérebro
 
 Este projeto é acompanhado no vault Obsidian "central":
-`C:\Users\Administrador\OneDrive\Desktop\Nova pasta\central\Projetos de Sites\17,5 RASTA\00 - RASTA (página principal).md`
+`C:\Users\Administrador\OneDrive\Desktop\Nova pasta\central\Projetos de Sites\18 RASTA\00 - RASTA (página principal).md`
 
 Ao trabalhar aqui:
 - Sempre que a palavra "site" aparecer numa mensagem sobre criar, alterar, analisar, desenvolver, validar ou publicar, ative a equipe completa (Guardião, Da Vinci, Diretor de Conversão/Devil, Conselho). Protocolo em `Nova pasta\central\0-comados de skill\Automação.md`.
 - Layout baseado no site da Saúde Fit Gym (`C:\Users\Administrador\OneDrive\Desktop\saude-fit-gym`), mesma stack.
-- Não inventar fotos, logos, depoimentos, números ou descontos. Preços e contatos vêm de `17,5 RASTA/03 - Produtos e preços.md`.
-- Registre decisões e progresso em `17,5 RASTA/13 - Site (estrutura e histórico).md`.
+- Não inventar fotos, logos, depoimentos, números ou descontos. Preços e contatos vêm de `18 RASTA/03 - Produtos e preços.md`.
+- Registre decisões e progresso em `18 RASTA/13 - Site (estrutura e histórico).md`.
 
 ## Painel de edição (/admin)
 - Mesmo modelo do painel da SQW: tela em `admin/index.html` + `src/admin/`, servidor em `api/` (funções da Vercel). Cada "Salvar e publicar" vira um commit na main pelo GitHub (variável `GITHUB_TOKEN`, token fine-grained só deste repositório) e a Vercel publica em ~1 min.
