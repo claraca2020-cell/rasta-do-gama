@@ -1,21 +1,11 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { ArrowRight, ChevronLeft, ChevronRight, Droplet, GraduationCap, HandHeart, HeartPulse, PawPrint, Shirt, Ticket, Trees, Volume2, VolumeX } from 'lucide-react'
 import logoPapagaio from '../assets/brand/logo-papagaio.webp'
-import heroAlgodao from '../assets/photos/hero-algodao-doce-sm.webp'
-import pilarArquibancada from '../assets/photos/pilar-arquibancada.webp'
-import pilarBaseGama from '../assets/photos/pilar-base-gama.webp'
-import pilarCaravanas from '../assets/photos/pilar-caravanas.webp'
-import pilarShows from '../assets/photos/pilar-shows-cultura.webp'
-import quemSomosFoto from '../assets/photos/quem-somos-rasta.webp'
-import bezerraoNoite from '../assets/photos/bezerrao-noite.webp'
-import caravanaEstrada from '../assets/photos/caravana-estrada.webp'
-import caravanaOnibus from '../assets/photos/caravana-onibus.webp'
-import rastaReunida from '../assets/photos/rasta-reunida.webp'
-import socialBandeira from '../assets/photos/social-bandeira-rasta.webp'
-import socialLembrancinhas from '../assets/photos/social-lembrancinhas.webp'
-import socialUpa from '../assets/photos/social-upa.webp'
-import { PRODUCTS, formatPrice, type Product } from '../data/products'
-import { FIRST_ORDER_COUPON, SOCIAL_ACTIONS } from '../data/social'
+import fotos from '../data/fotos.json'
+import fotosGeradas from '../data/fotos.gen.json'
+import { PRIMEIRA_COMPRA, mensagemCampanha } from '../data/campanhas'
+import { PRODUCTS, formatPrice, stockLabel, type Product } from '../data/products'
+import { SOCIAL_ACTIONS } from '../data/social'
 import { trackEvent } from '../lib/analytics'
 import { whatsappLink } from '../lib/contact'
 import { Link } from '../lib/Link'
@@ -29,18 +19,17 @@ import { ProductCard } from './ProductCard'
 // Fotos em /public/hero. Computador/tablet: foto horizontal 16:9 (900/1672/2400 px, para telas grandes e retina).
 // Celular: recorte vertical 3:5 feito para cada foto, enquadrando o assunto principal (bandeira, entrega do
 // algodão-doce, lanches). A 1ª tem preload no index.html.
-const heroSrc = (name: string) => ({
-  src: `/hero/${name}-1672.webp`,
-  srcSet: `/hero/${name}-900.webp 900w, /hero/${name}-1672.webp 1672w, /hero/${name}-2400.webp 2400w`,
-  mobile: `/hero/${name}-mobile.webp`,
-})
-// 06/10/2026: saiu a foto da torcida com bandeiras ("não somos nós", pediu a Rasta). Entram as fotos que a Rasta mandou
-// no WhatsApp em 05/10 (originais no Obsidian: 18 RASTA/18,5 PASTA DO CLIENTE/2026-10-05 WhatsApp).
-const SLIDES = [
-  { ...heroSrc('hero-noite'), alt: 'Faixa Rasta do Gama, movimento popular e cultural, na arquibancada do Bezerrão em jogo à noite', position: 'center 70%', pan: '-1.5%' },
-  { ...heroSrc('hero-grupo'), alt: 'Integrantes da Rasta reunidos com a faixa do movimento', position: 'center 60%', pan: '1.5%' },
-  { ...heroSrc('hero-caravana'), alt: 'Caravana da Rasta com a faixa Rasta do Gama ao lado do ônibus', position: 'center 50%', pan: '-1%' },
-]
+// As fotos do banner são escolhidas no painel (/admin → Fotos do site). scripts/preparar-fotos.mjs gera, para cada uma,
+// as versões 900/1672/2400 px (computador e tablet) e um recorte vertical 3:5 para o celular (fotos.gen.json).
+// As 3 fotos originais (05/10/2026) já têm versões e recortes feitos à mão em /public/hero, que são reaproveitados.
+type FotoGerada = { src: string; srcSet: string; mobile: string }
+const geradas = fotosGeradas as Record<string, FotoGerada>
+const SLIDES = fotos.banner.map((b, i) => ({
+  ...(geradas[b.foto] ?? { src: b.foto, srcSet: `${b.foto} 1600w`, mobile: b.foto }),
+  alt: b.alt,
+  position: `center ${b.posicao}%`,
+  pan: i % 2 ? '1.5%' : '-1.5%', // alterna a direção do movimento lento (sensação de câmera andando)
+}))
 const SLIDE_MS = 4000
 
 export function HeroSlideshow() {
@@ -169,7 +158,7 @@ export function AboutRasta() {
       </div>
 
       <div className="mx-auto mt-10 grid max-w-[1100px] md:mt-12 md:grid-cols-2">
-        <img src={quemSomosFoto} alt="Torcida da Rasta com a faixa RASTA, Igualdade, Paz e Amizade" width={1448} height={921} className="h-72 w-full object-cover md:h-full" loading="lazy" />
+        <img src={fotos.quemSomos.foto} alt={fotos.quemSomos.alt} width={1448} height={921} className="h-72 w-full object-cover md:h-full" loading="lazy" />
         <div className="relative overflow-hidden bg-[var(--color-bg-soft)] px-6 py-8 text-[var(--color-ink)] md:px-12 md:py-12">
           <img src={logoPapagaio} alt="" aria-hidden="true" width={590} height={640} className="pointer-events-none absolute -right-10 -bottom-10 h-auto w-56 opacity-[0.06]" />
           <p className="relative text-lg leading-relaxed">
@@ -196,15 +185,18 @@ export function AboutRasta() {
 /* ---------- Área social: vídeo no centro, fotos em volta ---------- */
 type Photo = { src: string; alt: string; caption: string; rotate: string; className?: string }
 
-// Legendas enviadas pela Rasta (05/10/2026).
-const LEFT_PHOTOS: Photo[] = [
-  { src: socialUpa, alt: 'Integrantes da Rasta entregando janta em uma UPA', caption: 'Entrega de janta em hospitais e UPA', rotate: '-4deg', className: 'aspect-[3/4]' },
-  { src: heroAlgodao, alt: 'Algodão-doce sendo entregue a uma criança na ação de Páscoa', caption: 'Ação social de Páscoa', rotate: '3deg', className: 'aspect-[4/3] lg:ml-10' },
+// Fotos e legendas: painel (/admin → Fotos do site). O jeito de cada polaroid (inclinação e formato) fica fixo pela posição.
+const LOOKS = [
+  { rotate: '-4deg', className: 'aspect-[3/4]' },
+  { rotate: '3deg', className: 'aspect-[4/3] lg:ml-10' },
+  { rotate: '3deg', className: 'aspect-[4/3]' },
+  { rotate: '-3deg', className: 'aspect-[3/4] lg:ml-8 lg:w-[80%]' },
 ]
-const RIGHT_PHOTOS: Photo[] = [
-  { src: socialBandeira, alt: 'Integrantes da Rasta em ação de doação de agasalhos e roupas', caption: 'Doação de agasalhos e roupas para associações de acolhimento', rotate: '3deg', className: 'aspect-[4/3]' },
-  { src: socialLembrancinhas, alt: 'Lembrancinhas e ovos de Páscoa embalados com o selo da Rasta do Gama', caption: '+ de 200 ovos de Páscoa entregues', rotate: '-3deg', className: 'aspect-[3/4] lg:ml-8 lg:w-[80%]' },
-]
+const comLook = (lista: { foto: string; alt: string; legenda: string }[]): Photo[] =>
+  lista.map((f, i) => ({ src: f.foto, alt: f.alt, caption: f.legenda, ...LOOKS[i % LOOKS.length] }))
+const SOCIAL_PHOTOS = comLook(fotos.acaoSocial)
+const LEFT_PHOTOS = SOCIAL_PHOTOS.slice(0, 2)
+const RIGHT_PHOTOS = SOCIAL_PHOTOS.slice(2, 4)
 
 function Polaroid({ photo }: { photo: Photo }) {
   return (
@@ -323,15 +315,10 @@ export function SocialArea() {
 
 /* ---------- Caravanas: mesmo formato da área social (vídeo no centro, fotos em volta) ---------- */
 // Texto e vídeo enviados pela Rasta no WhatsApp (05/10/2026): "Caravanas, 'A onde o Gama for eu lá estou',
-// horas de viagem para apoiar nosso time do coração". Fotos da Rasta reunida, enviadas na mesma conversa.
-const CARAVAN_LEFT: Photo[] = [
-  { src: caravanaEstrada, alt: 'Integrantes da Rasta com a faixa do movimento ao lado do ônibus da caravana', caption: 'Pé na estrada', rotate: '-3deg', className: 'aspect-[3/4]' },
-  { src: caravanaOnibus, alt: 'Faixa Rasta do Gama estendida ao lado do ônibus da caravana', caption: 'Rumo ao jogo', rotate: '3deg', className: 'aspect-[4/3] lg:ml-10' },
-]
-const CARAVAN_RIGHT: Photo[] = [
-  { src: rastaReunida, alt: 'Integrantes da Rasta reunidos com a faixa do movimento', caption: 'A Rasta reunida', rotate: '3deg', className: 'aspect-[4/3]' },
-  { src: bezerraoNoite, alt: 'Faixa Movimento Rasta na arquibancada do Bezerrão em jogo à noite', caption: 'Noite de Bezerrão', rotate: '-3deg', className: 'aspect-[3/4] lg:ml-8 lg:w-[80%]' },
-]
+// horas de viagem para apoiar nosso time do coração". Fotos e legendas: painel (/admin → Fotos do site).
+const CARAVAN_PHOTOS = comLook(fotos.caravanas)
+const CARAVAN_LEFT = CARAVAN_PHOTOS.slice(0, 2)
+const CARAVAN_RIGHT = CARAVAN_PHOTOS.slice(2, 4)
 
 export function Caravans() {
   return (
@@ -366,13 +353,9 @@ export function Caravans() {
 }
 
 /* ---------- Como atuamos (grade de fotos, como os "Programas" do Instituto Galo) ---------- */
-const PILLARS = [
-  // Fotos e legendas enviadas pela Rasta (05/10/2026).
-  { title: 'Na arquibancada', img: pilarArquibancada, href: '/quem-somos', position: 'center 60%' },
-  { title: 'Caravanas', img: pilarCaravanas, href: '/#caravanas', position: 'center 55%' },
-  { title: 'Base do Gama', img: pilarBaseGama, href: '/#acao-social', position: 'center 55%' },
-  { title: 'Shows e cultura', img: pilarShows, href: '/quem-somos', position: 'center 30%' },
-]
+// Títulos e fotos: painel (/admin → Fotos do site). Os links ficam fixos pela posição.
+const PILLAR_LINKS = ['/quem-somos', '/#caravanas', '/#acao-social', '/quem-somos']
+const PILLARS = fotos.pilares.map((p, i) => ({ title: p.titulo, img: p.foto, href: PILLAR_LINKS[i] ?? '/quem-somos', position: `center ${p.posicao}%` }))
 
 export function HowWeAct() {
   return (
@@ -451,9 +434,9 @@ function ShowcasePolaroid({ product, index }: { product: Product; index: number 
             className={`showcase-fade absolute inset-0 h-full w-full object-contain p-2 ${i === photo ? 'is-active' : ''}`}
           />
         ))}
-        {product.badge && (
-          <span className="absolute left-2 top-2 z-[1] bg-[var(--color-alert)] px-2 py-0.5 text-[0.6rem] font-bold uppercase tracking-[0.1em] text-[var(--color-black)]">
-            {product.badge}
+        {(stockLabel(product) ?? product.badge) && (
+          <span className={`absolute left-2 top-2 z-[1] px-2 py-0.5 text-[0.6rem] font-bold uppercase tracking-[0.1em] ${product.stock === 'esgotado' ? 'bg-[var(--color-ink)] text-white' : 'bg-[var(--color-alert)] text-[var(--color-black)]'}`}>
+            {stockLabel(product) ?? product.badge}
           </span>
         )}
         <span className="absolute bottom-2 left-1/2 z-[1] flex -translate-x-1/2 gap-1" aria-hidden="true">
@@ -535,15 +518,17 @@ export function SupportSection() {
 
 /* ---------- Cupom de primeira compra (pedido da Rasta em 05/10/2026: botão que abre o WhatsApp) ---------- */
 export function CouponButton({ source, className = '' }: { source: string; className?: string }) {
+  // Some quando a campanha de primeira compra é desativada no painel.
+  if (!PRIMEIRA_COMPRA) return null
   return (
     <a
-      href={whatsappLink(`Olá, Rasta! É minha primeira compra e quero usar o cupom ${FIRST_ORDER_COUPON} (5% de desconto).`)}
+      href={whatsappLink(mensagemCampanha(PRIMEIRA_COMPRA))}
       target="_blank"
       rel="noreferrer"
       onClick={() => trackEvent('whatsapp_click', { source: `cupom-${source}` })}
       className={`btn-line inline-flex min-h-12 items-center gap-2 rounded px-7 text-sm ${className}`}
     >
-      <Ticket size={17} /> 5% off na 1ª compra
+      <Ticket size={17} /> {PRIMEIRA_COMPRA.titulo}
     </a>
   )
 }

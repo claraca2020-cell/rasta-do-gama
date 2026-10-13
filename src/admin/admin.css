@@ -1,0 +1,61 @@
+/* Painel (/admin): mesmas peças do painel da SQW, com as cores da Rasta.
+   Tudo em @layer components, para as classes utilitárias do Tailwind continuarem podendo ajustar cada botão. */
+:root {
+  --color-navy: #083d21; /* verde profundo da Rasta (cabeçalho, botões escuros) */
+  --color-navy-deep: #052a16;
+  --color-green: #8fdcab; /* verde-claro: botão principal (texto escuro em cima) */
+  --color-cream: #f3f6f1;
+  --color-sand: #e7eee6;
+  --color-muted: #4f6157;
+  --color-line: #d9e3d8;
+}
+
+@layer components {
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 48px;
+    border-radius: 999px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+  }
+  .btn-green {
+    background: var(--color-green);
+    color: var(--color-navy-deep);
+  }
+  .btn-green:hover {
+    background: #a6e6bd;
+  }
+  .btn-navy {
+    background: var(--color-navy);
+    color: #fff;
+  }
+  .btn-navy:hover {
+    background: var(--color-navy-deep);
+  }
+  .btn-ghost {
+    border: 1.5px solid currentColor;
+  }
+  .btn-ghost:hover {
+    background: color-mix(in srgb, currentColor 8%, transparent);
+  }
+  .field {
+    width: 100%;
+    min-height: 48px;
+    border-radius: 0.75rem;
+    border: 1px solid var(--color-line);
+    background: #fff;
+    padding: 0.7rem 0.9rem;
+    font-size: 1rem;
+    color: var(--color-ink);
+  }
+  .field:focus {
+    outline: none;
+    border-color: var(--color-brand);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-brand) 22%, transparent);
+  }
+}

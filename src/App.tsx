@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { MotionConfig } from 'framer-motion'
+import { CampaignBar } from './components/CampaignBar'
 import { CartDrawer } from './components/CartDrawer'
 import { CartProvider } from './components/CartProvider'
 import { Footer, WhatsAppFloat } from './components/Footer'
@@ -52,6 +53,7 @@ function App() {
         </a>
         <Header overHero={isHome} />
         <main id="main-content" tabIndex={-1} className={isHome ? '' : 'pt-[var(--header-h)]'}>
+          {!isHome && <CampaignBar />}
           {page}
         </main>
         <Footer />

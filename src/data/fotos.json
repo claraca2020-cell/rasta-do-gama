@@ -1,0 +1,27 @@
+{
+ "banner": [
+  { "foto": "/hero/hero-noite-2400.webp", "alt": "Faixa Rasta do Gama, movimento popular e cultural, na arquibancada do Bezerrão em jogo à noite", "posicao": 70 },
+  { "foto": "/hero/hero-grupo-2400.webp", "alt": "Integrantes da Rasta reunidos com a faixa do movimento", "posicao": 60 },
+  { "foto": "/hero/hero-caravana-2400.webp", "alt": "Caravana da Rasta com a faixa Rasta do Gama ao lado do ônibus", "posicao": 50 }
+ ],
+ "fundoPaginas": "/fotos/banner-interno.webp",
+ "quemSomos": { "foto": "/fotos/quem-somos-rasta.webp", "alt": "Torcida da Rasta com a faixa RASTA, Igualdade, Paz e Amizade" },
+ "pilares": [
+  { "titulo": "Na arquibancada", "foto": "/fotos/pilar-arquibancada.webp", "posicao": 60 },
+  { "titulo": "Caravanas", "foto": "/fotos/pilar-caravanas.webp", "posicao": 55 },
+  { "titulo": "Base do Gama", "foto": "/fotos/pilar-base-gama.webp", "posicao": 55 },
+  { "titulo": "Shows e cultura", "foto": "/fotos/pilar-shows-cultura.webp", "posicao": 30 }
+ ],
+ "acaoSocial": [
+  { "foto": "/fotos/social-upa.webp", "alt": "Integrantes da Rasta entregando janta em uma UPA", "legenda": "Entrega de janta em hospitais e UPA" },
+  { "foto": "/fotos/hero-algodao-doce-sm.webp", "alt": "Algodão-doce sendo entregue a uma criança na ação de Páscoa", "legenda": "Ação social de Páscoa" },
+  { "foto": "/fotos/social-bandeira-rasta.webp", "alt": "Integrantes da Rasta em ação de doação de agasalhos e roupas", "legenda": "Doação de agasalhos e roupas para associações de acolhimento" },
+  { "foto": "/fotos/social-lembrancinhas.webp", "alt": "Lembrancinhas e ovos de Páscoa embalados com o selo da Rasta do Gama", "legenda": "+ de 200 ovos de Páscoa entregues" }
+ ],
+ "caravanas": [
+  { "foto": "/fotos/caravana-estrada.webp", "alt": "Integrantes da Rasta com a faixa do movimento ao lado do ônibus da caravana", "legenda": "Pé na estrada" },
+  { "foto": "/fotos/caravana-onibus.webp", "alt": "Faixa Rasta do Gama estendida ao lado do ônibus da caravana", "legenda": "Rumo ao jogo" },
+  { "foto": "/fotos/rasta-reunida.webp", "alt": "Integrantes da Rasta reunidos com a faixa do movimento", "legenda": "A Rasta reunida" },
+  { "foto": "/fotos/bezerrao-noite.webp", "alt": "Faixa Movimento Rasta na arquibancada do Bezerrão em jogo à noite", "legenda": "Noite de Bezerrão" }
+ ]
+}

@@ -1,5 +1,5 @@
 import mascote from '../assets/brand/mascote-periquito.webp'
-import adesivosArte from '../assets/photos/social-bandeira-rasta.webp'
+const adesivosArte = '/fotos/social-bandeira-rasta.webp'
 import { PageBanner } from '../components/PageBanner'
 import { Watermark } from '../components/Decor'
 import { SOCIAL_ACTIONS } from '../data/social'

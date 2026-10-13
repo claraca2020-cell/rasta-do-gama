@@ -1,30 +1,12 @@
-import adesivosPack from '../assets/products/adesivos-pack.webp'
-import adesivos1 from '../assets/products/adesivos-1.webp'
-import adesivos2 from '../assets/products/adesivos-2.webp'
-import adesivos3 from '../assets/products/adesivos-3.webp'
-import boneFive1 from '../assets/products/bone-five-1.webp'
-import boneTrucker1 from '../assets/products/bone-trucker-1.webp'
-import boneVerde1 from '../assets/products/bone-verde-1.webp'
-import boneVerde2 from '../assets/products/bone-verde-2.webp'
-import boneVerde3 from '../assets/products/bone-verde-3.webp'
-import camisa1 from '../assets/products/camisa-1.webp'
-import camisa2 from '../assets/products/camisa-2.webp'
-import camisa3 from '../assets/products/camisa-3.webp'
-import casacoReal1 from '../assets/products/casaco-real-1.webp'
-import casacoReal2 from '../assets/products/casaco-real-2.webp'
-import casacoReal3 from '../assets/products/casaco-real-3.webp'
-import cordinha1 from '../assets/products/cordinha-1.webp'
-import faixaMao1 from '../assets/products/faixa-mao-1.webp'
-import casaco2 from '../assets/products/casaco-2.webp'
-import meia1 from '../assets/products/meia-1.webp'
-import meia2 from '../assets/products/meia-2.webp'
-import meia3 from '../assets/products/meia-3.webp'
+import produtos from './produtos.json'
 
-// Fotos: vault "17,5 RASTA/000,1produtos" e fotos reais enviadas pela Rasta em 05/10/2026
-// ("18 RASTA/18,5 PASTA DO CLIENTE/2026-10-05 WhatsApp"), convertidas para webp em src/assets/products.
-// Preços: Google Forms/posts da Rasta (28/09/2026), atualizados pela Rasta no WhatsApp em 05/10/2026.
-// Sem preço confirmado => "Consulte" (não inventar). Produtos sem foto aparecem só no catálogo até chegarem as fotos.
+// Produtos, preços, fotos e estoque são editados pelo painel (/admin), que grava src/data/produtos.json.
+// Origem dos dados iniciais: vault "17,5 RASTA/000,1produtos", fotos reais enviadas pela Rasta em 05/10/2026
+// e preços dos posts da Rasta (28/09/2026), atualizados no WhatsApp em 05/10/2026.
+// Sem preço => "Consulte" (não inventar). Produto marcado como oculto no painel não aparece no site.
 export type ProductOption = { label: string; values: readonly string[] }
+
+export type Stock = 'disponivel' | 'encomenda' | 'esgotado'
 
 export type Product = {
   slug: string
@@ -37,118 +19,32 @@ export type Product = {
   features: readonly string[]
   options: readonly ProductOption[]
   images: readonly string[]
+  stock: Stock
+  quantity: number | null
+  visible: boolean
 }
 
 export const CATEGORIES = ['Bonés', 'Casacos', 'Camisas', 'Acessórios'] as const
 export type Category = (typeof CATEGORIES)[number]
 
-const TAMANHOS_ADULTO = ['P', 'M', 'G', 'GG', 'XG', '3G', '4G'] as const
-
-export const PRODUCTS: readonly Product[] = [
-  {
-    slug: 'bone-rasta-verde-papagaio',
-    name: 'Boné Trucker Rasta Verde Papagaio',
-    category: 'Bonés',
-    price: '64,90',
-    unit: 'por unidade',
-    badge: 'Novo',
-    description: 'Boné verde do Gama com o papagaio rasta e o escrito RASTA na frente.',
-    features: ['Verde do Gama', 'Arte RASTA com o papagaio rasta', 'Regulagem traseira com fivela'],
-    options: [],
-    images: [boneTrucker1, boneVerde1, boneVerde3, boneVerde2],
-  },
-  {
-    slug: 'casaco-corta-vento-rasta',
-    name: 'Casaco Corta-vento Rasta',
-    category: 'Casacos',
-    price: '229,90',
-    unit: 'por unidade',
-    badge: '2ª remessa',
-    description: 'Corta-vento verde com capuz, escudo na frente e a arte RASTA nas costas.',
-    features: ['Capuz e zíper frontal', 'Bolsos laterais', 'Arte RASTA nas costas'],
-    options: [
-      { label: 'Modelo', values: ['Masculino', 'Feminino', 'Infantil'] },
-      { label: 'Tamanho', values: TAMANHOS_ADULTO },
-    ],
-    images: [casacoReal1, casacoReal2, casacoReal3, casaco2],
-  },
-  {
-    slug: 'adesivos-rasta',
-    name: 'Adesivos Rasta',
-    category: 'Acessórios',
-    price: '9,99',
-    unit: 'pack com 4',
-    description: 'Pack com 4 adesivos com as artes do movimento: Gama e o papagaio rasta, "Igualdade · Paz · Unidade", Rasta do Gama e Movimento Rasta.',
-    features: ['4 artes diferentes', 'Papagaio rasta e escudo do Gama', 'Para garrafa, notebook, carro…'],
-    options: [],
-    images: [adesivosPack, adesivos1, adesivos2, adesivos3],
-  },
-  {
-    slug: 'camisa-rasta',
-    name: 'Camisa Rasta do Gama',
-    category: 'Camisas',
-    price: '49,90',
-    unit: 'por unidade',
-    badge: 'Pré-venda',
-    description: 'Camisa oficial do Movimento Rasta do Gama, em poliéster, em manga ou regata.',
-    features: ['Poliéster', 'Manga ou regata', 'Corte normal ou BabyLook', 'Também em tamanho infantil'],
-    options: [
-      { label: 'Modelo', values: ['Manga', 'Regata'] },
-      { label: 'Corte', values: ['Normal', 'BabyLook'] },
-      { label: 'Tamanho', values: [...TAMANHOS_ADULTO, 'Infantil'] },
-    ],
-    images: [camisa1, camisa2, camisa3],
-  },
-  {
-    slug: 'bone-five-panel-rasta',
-    name: 'Boné Five Panel Rasta',
-    category: 'Bonés',
-    price: '79,90',
-    unit: 'por unidade',
-    badge: 'Reserva',
-    description: 'Boné modelo five panel com estilo rasta.',
-    features: ['Modelo five panel', 'Estilo rasta'],
-    options: [],
-    images: [boneFive1],
-  },
-  {
-    slug: 'meia-rasta',
-    name: 'Meia Rasta',
-    category: 'Acessórios',
-    price: '25,00',
-    unit: 'por par',
-    badge: 'Lançamento',
-    description: 'Meia branca de cano alto com listras verdes, a arte RASTA de um lado e o escudo do Gama do outro.',
-    features: ['100% algodão', 'Do 35 ao 43', 'Arte RASTA e escudo do Gama'],
-    options: [],
-    images: [meia1, meia3, meia2],
-  },
-  {
-    slug: 'cordinha-com-abridor-rasta',
-    name: 'Cordinha com Abridor Rasta',
-    category: 'Acessórios',
-    price: '19,99',
-    unit: 'por unidade',
-    description: 'Cordinha com abridor de garrafa com a identidade da Rasta do Gama.',
-    features: ['Com abridor de garrafa'],
-    options: [],
-    images: [cordinha1],
-  },
-  {
-    slug: 'faixa-de-mao-rasta',
-    name: 'Faixa de Mão Rasta',
-    category: 'Acessórios',
-    price: '14,99',
-    unit: 'por unidade',
-    description: 'Faixa de mão com as cores e a identidade da Rasta do Gama.',
-    features: ['Para levar ao estádio'],
-    options: [],
-    images: [faixaMao1],
-  },
-]
+export const PRODUCTS: readonly Product[] = (produtos as Product[])
+  .filter((p) => p.visible)
+  .map((p) => ({ ...p, price: p.price || undefined, badge: p.badge || undefined }))
 
 export function findProduct(slug: string) {
   return PRODUCTS.find((product) => product.slug === slug)
+}
+
+/** Pode ir para a sacola? Esgotado não; sob encomenda sim (o prazo é combinado no WhatsApp). */
+export const canOrder = (product: Product) => product.stock !== 'esgotado'
+
+/** Aviso de estoque para o cliente (só com dado real informado no painel). */
+export function stockLabel(product: Product) {
+  if (product.stock === 'esgotado') return 'Esgotado'
+  if (product.stock === 'encomenda') return 'Sob encomenda'
+  if (product.quantity !== null && product.quantity > 0 && product.quantity <= 5)
+    return product.quantity === 1 ? 'Última unidade' : `Últimas ${product.quantity} unidades`
+  return null
 }
 
 export function formatPrice(product: Product) {

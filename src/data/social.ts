@@ -7,5 +7,3 @@ export const SOCIAL_ACTIONS = [
   { date: '10 out 2026', title: 'Dia das Crianças', text: 'Na paróquia São José: brinquedos, alimentação, pintura facial, aulas de xadrez, grafite, área da saúde, corte de cabelo e lembrancinhas.' },
 ]
 
-// Cupom de 5% na primeira compra, usado pelo WhatsApp (05/10/2026).
-export const FIRST_ORDER_COUPON = 'RASTAPRIMEIRA'

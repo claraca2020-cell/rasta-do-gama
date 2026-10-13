@@ -26,3 +26,10 @@ dist-ssr
 
 .vercel
 .vercel
+
+# Gerados pelo scripts/preparar-fotos.mjs
+src/data/fotos.gen.json
+public/_otim/
+# Painel: testes no computador e acessos (nunca no git)
+.env.painel.local
+ACESSOS-PAINEL.local.txt

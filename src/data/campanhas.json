@@ -1,0 +1,10 @@
+[
+ {
+  "id": "primeira-compra",
+  "titulo": "5% off na 1ª compra",
+  "texto": "Use o cupom na sua primeira compra pelo WhatsApp.",
+  "cupom": "RASTAPRIMEIRA",
+  "ativa": true,
+  "faixa": false
+ }
+]

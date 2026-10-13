@@ -1,3 +1,4 @@
+import { CampaignBar } from '../components/CampaignBar'
 import { AboutRasta, Caravans, Friends, HeroSlideshow, HowWeAct, NextSteps, SocialArea, StoreSection, SupportSection } from '../components/HomeSections'
 
 // Home institucional (inspiração: institutogalo.com.br). A loja continua, mas como uma seção entre outras.
@@ -6,6 +7,7 @@ export function HomePage() {
   return (
     <>
       <HeroSlideshow />
+      <CampaignBar />
       <AboutRasta />
       <SocialArea />
       <NextSteps />

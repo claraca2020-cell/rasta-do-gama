@@ -1,5 +1,5 @@
 import { ImageIcon } from 'lucide-react'
-import { formatPrice, type Product } from '../data/products'
+import { formatPrice, stockLabel, type Product } from '../data/products'
 import { Link } from '../lib/Link'
 
 export function ProductImage({ src, alt, className = '' }: { src?: string; alt: string; className?: string }) {
@@ -37,9 +37,9 @@ export function ProductCard({ product }: { product: Product }) {
             className="absolute inset-0 h-full w-full bg-white object-contain opacity-0 transition-opacity duration-500 group-hover:opacity-100"
           />
         )}
-        {product.badge && (
-          <span className="absolute left-2 top-2 bg-[var(--color-alert)] px-2.5 py-1 text-[0.62rem] font-bold uppercase tracking-[0.1em] text-[var(--color-black)]">
-            {product.badge}
+        {(stockLabel(product) ?? product.badge) && (
+          <span className={`absolute left-2 top-2 px-2.5 py-1 text-[0.62rem] font-bold uppercase tracking-[0.1em] ${product.stock === 'esgotado' ? 'bg-[var(--color-ink)] text-white' : 'bg-[var(--color-alert)] text-[var(--color-black)]'}`}>
+            {stockLabel(product) ?? product.badge}
           </span>
         )}
       </div>

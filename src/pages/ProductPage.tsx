@@ -2,7 +2,8 @@ import { useState } from 'react'
 import { Check, ChevronRight, Minus, Plus, ShoppingBag } from 'lucide-react'
 import { ProductRail } from '../components/HomeSections'
 import { ProductGallery } from '../components/ProductGallery'
-import { PRODUCTS, categoryHref, formatPrice, type Product } from '../data/products'
+import { CAMPANHAS } from '../data/campanhas'
+import { PRODUCTS, canOrder, categoryHref, formatPrice, stockLabel, type Product } from '../data/products'
 import { trackEvent } from '../lib/analytics'
 import { cartMessage, useCart } from '../lib/cart'
 import { whatsappLink } from '../lib/contact'
@@ -18,7 +19,12 @@ export function ProductPage({ product }: { product: Product }) {
 
   const orderItem = { slug: product.slug, name: product.name, price: product.price, options: selected, quantity }
 
+  const available = canOrder(product)
+  const stock = stockLabel(product)
+  const cupons = CAMPANHAS.filter((c) => c.cupom)
+
   const addToBag = () => {
+    if (!available) return
     if (missing.length > 0) {
       setShowError(true)
       return
@@ -50,6 +56,12 @@ export function ProductPage({ product }: { product: Product }) {
             <p className="mt-1 text-sm text-[var(--color-text-muted)]">
               {product.price ? product.unit : 'Preço e disponibilidade pelo WhatsApp'}
             </p>
+            {stock && (
+              <p className={`mt-3 inline-block rounded px-3 py-1 text-sm font-bold ${product.stock === 'esgotado' ? 'bg-[var(--color-ink)] text-white' : 'bg-[var(--color-alert)] text-[var(--color-brand-deep)]'}`}>
+                {stock}
+                {product.stock === 'encomenda' && <span className="font-medium"> · prazo combinado pelo WhatsApp</span>}
+              </p>
+            )}
 
             <p className="mt-6 leading-relaxed text-[var(--color-text-muted)]">{product.description}</p>
             <ul className="mt-4 space-y-2">
@@ -91,37 +103,55 @@ export function ProductPage({ product }: { product: Product }) {
               </fieldset>
             ))}
 
-            <div className="mt-6">
+            <div className={available ? 'mt-6' : 'hidden'}>
               <p className="heading text-sm">Quantidade</p>
               <div className="mt-3 inline-flex items-center border-2 border-[var(--color-black)]">
                 <button type="button" aria-label="Diminuir quantidade" onClick={() => setQuantity((q) => Math.max(1, q - 1))} className="flex h-11 w-11 items-center justify-center">
                   <Minus size={16} />
                 </button>
                 <span aria-live="polite" className="w-10 text-center font-bold">{quantity}</span>
-                <button type="button" aria-label="Aumentar quantidade" onClick={() => setQuantity((q) => Math.min(20, q + 1))} className="flex h-11 w-11 items-center justify-center">
+                <button type="button" aria-label="Aumentar quantidade" onClick={() => setQuantity((q) => Math.min(product.quantity && product.quantity > 0 ? product.quantity : 20, q + 1))} className="flex h-11 w-11 items-center justify-center">
                   <Plus size={16} />
                 </button>
               </div>
             </div>
 
-            <button type="button" onClick={addToBag} className="btn-black mt-8 flex min-h-12 w-full items-center justify-center gap-2 py-4 text-sm">
-              <ShoppingBag size={18} /> Adicionar à sacola
-            </button>
-            {showError && (
-              <p role="alert" className="mt-2 text-sm font-semibold text-[var(--color-alert)]">
-                Escolha {missing.map((o) => o.label.toLowerCase()).join(' e ')} antes de adicionar.
-              </p>
+            {available ? (
+              <>
+                <button type="button" onClick={addToBag} className="btn-black mt-8 flex min-h-12 w-full items-center justify-center gap-2 py-4 text-sm">
+                  <ShoppingBag size={18} /> Adicionar à sacola
+                </button>
+                {showError && (
+                  <p role="alert" className="mt-2 text-sm font-semibold text-[var(--color-alert)]">
+                    Escolha {missing.map((o) => o.label.toLowerCase()).join(' e ')} antes de adicionar.
+                  </p>
+                )}
+                <a
+                  href={whatsappLink(cartMessage([{ ...orderItem, id: product.slug }]))}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() => trackEvent('whatsapp_click', { product: product.name, quantity })}
+                  className="btn-line mt-3 flex min-h-12 w-full items-center justify-center text-sm"
+                >
+                  Comprar agora pelo WhatsApp
+                </a>
+              </>
+            ) : (
+              // Esgotado: em vez de perder o interessado, ele pede para ser avisado quando chegar.
+              <a
+                href={whatsappLink(`Olá, Rasta! Vi no site que o ${product.name} está esgotado. Me avisa quando chegar?`)}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => trackEvent('whatsapp_click', { product: product.name, source: 'avise-me' })}
+                className="btn-black mt-8 flex min-h-12 w-full items-center justify-center gap-2 py-4 text-sm"
+              >
+                Avise-me quando chegar
+              </a>
             )}
-            <a
-              href={whatsappLink(cartMessage([{ ...orderItem, id: product.slug }]))}
-              target="_blank"
-              rel="noreferrer"
-              onClick={() => trackEvent('whatsapp_click', { product: product.name, quantity })}
-              className="btn-line mt-3 flex min-h-12 w-full items-center justify-center text-sm"
-            >
-              Comprar agora pelo WhatsApp
-            </a>
-            <p className="mt-4 text-center text-xs text-[var(--color-text-muted)]">Pix ou cartão de crédito · Entrega no Gama ou envio para todo o Brasil · 5% na 1ª compra com o cupom RASTAPRIMEIRA</p>
+            <p className="mt-4 text-center text-xs text-[var(--color-text-muted)]">
+              Pix ou cartão de crédito · Entrega no Gama ou envio para todo o Brasil
+              {cupons.map((c) => ` · ${c.titulo}: cupom ${c.cupom}`).join('')}
+            </p>
           </div>
         </div>
       </section>
