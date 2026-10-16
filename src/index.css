@@ -118,6 +118,9 @@ section[id] {
   font-size: clamp(3rem, 9vw, 6.5rem);
   line-height: 1;
   color: rgb(16 35 26 / 6%);
+  /* não deixa o texto decorativo alargar a página no celular */
+  max-width: 100%;
+  overflow: hidden;
 }
 .watermark-on-dark {
   color: color-mix(in srgb, #fff 9%, transparent);
