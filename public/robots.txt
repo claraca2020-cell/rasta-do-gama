@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rasta-do-gama.vercel.app/sitemap.xml
+Sitemap: https://rastadogama.com.br/sitemap.xml

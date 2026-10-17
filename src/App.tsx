@@ -15,6 +15,7 @@ import { ProductPage } from './pages/ProductPage'
 import { ProductsPage } from './pages/ProductsPage'
 
 const SITE_NAME = 'Movimento Rasta do Gama'
+const SITE_URL = 'https://rastadogama.com.br'
 
 function resolveRoute(path: string, search: string) {
   const clean = path.replace(/\/+$/, '') || '/'
@@ -37,6 +38,8 @@ function App() {
 
   useEffect(() => {
     document.title = title
+    const canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]')
+    if (canonical) canonical.href = `${SITE_URL}${path.replace(/\/+$/, '') || '/'}`
     const hash = window.location.hash.slice(1)
     if (hash) {
       requestAnimationFrame(() => document.getElementById(hash)?.scrollIntoView())
