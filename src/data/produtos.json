@@ -88,7 +88,7 @@
    "/loja/casaco-real-3.webp",
    "/loja/casaco-2.webp"
   ],
-  "stock": "disponivel",
+  "stock": "encomenda",
   "quantity": null,
   "visible": true
  },
