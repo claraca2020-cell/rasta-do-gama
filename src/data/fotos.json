@@ -3,16 +3,21 @@
   {
    "foto": "/hero/hero-noite-2400.webp",
    "alt": "Faixa Rasta do Gama, movimento popular e cultural, na arquibancada do Bezerrão em jogo à noite",
-   "posicao": 70
+   "posicao": 65
   },
   {
    "foto": "/hero/hero-grupo-2400.webp",
-   "alt": "Integrantes da Rasta reunidos com a faixa do movimento",
+   "alt": "PRÉ JOGO NA TENDA DA RASTA",
    "posicao": 60
   },
   {
    "foto": "/hero/hero-caravana-2400.webp",
    "alt": "Caravana da Rasta com a faixa Rasta do Gama ao lado do ônibus",
+   "posicao": 50
+  },
+  {
+   "foto": "/fotos/painel/2026-11/mw5m37e8-46239fea.webp",
+   "alt": "Representatividade",
    "posicao": 50
   }
  ],
