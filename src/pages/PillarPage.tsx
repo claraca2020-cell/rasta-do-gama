@@ -28,7 +28,7 @@ function Intro({ eyebrow, title, children }: { eyebrow: string; title: string; c
 
 function Gallery({ photos }: { photos: Photo[] }) {
   return (
-    <div className="mx-auto mt-10 grid max-w-[1100px] grid-cols-2 gap-6 md:mt-12 md:grid-cols-4 md:gap-8">
+    <div className={`mx-auto mt-10 grid max-w-[1100px] grid-cols-2 gap-6 md:mt-12 md:gap-8 ${photos.length === 3 ? 'md:grid-cols-3 md:max-w-[840px]' : 'md:grid-cols-4'}`}>
       {photos.map((photo) => (
         <Polaroid key={photo.src} photo={photo} />
       ))}
@@ -38,7 +38,6 @@ function Gallery({ photos }: { photos: Photo[] }) {
 
 const ARQUIBANCADA = polaroids([
   { foto: fotos.pilares[0]?.foto ?? '/fotos/pilar-arquibancada.webp', alt: 'Rasta do Gama na arquibancada', legenda: 'BEZERRÃO' },
-  { foto: '/fotos/bezerrao-noite.webp', alt: 'Faixa Movimento Rasta na arquibancada do Bezerrão em jogo à noite', legenda: 'JOGO À NOITE' },
   { foto: '/hero/hero-noite-1672.webp', alt: 'Faixa Rasta do Gama na arquibancada do Bezerrão', legenda: 'NOSSA FAIXA' },
   { foto: '/fotos/rasta-reunida.webp', alt: 'Integrantes da Rasta reunidos', legenda: 'RASTA REUNIDA' },
 ])
