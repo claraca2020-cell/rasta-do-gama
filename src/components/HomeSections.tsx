@@ -183,7 +183,7 @@ export function AboutRasta() {
 }
 
 /* ---------- Área social: vídeo no centro, fotos em volta ---------- */
-type Photo = { src: string; alt: string; caption: string; rotate: string; className?: string }
+export type Photo = { src: string; alt: string; caption: string; rotate: string; className?: string }
 
 // Fotos e legendas: painel (/admin → Fotos do site). O jeito de cada polaroid (inclinação e formato) fica fixo pela posição.
 const LOOKS = [
@@ -198,7 +198,7 @@ const SOCIAL_PHOTOS = comLook(fotos.acaoSocial)
 const LEFT_PHOTOS = SOCIAL_PHOTOS.slice(0, 2)
 const RIGHT_PHOTOS = SOCIAL_PHOTOS.slice(2, 4)
 
-function Polaroid({ photo }: { photo: Photo }) {
+export function Polaroid({ photo }: { photo: Photo }) {
   return (
     <figure className="polaroid" style={{ transform: `rotate(${photo.rotate})` }}>
       <img src={photo.src} alt={photo.alt} loading="lazy" className={`w-full object-cover ${photo.className ?? ''}`} />
@@ -353,8 +353,9 @@ export function Caravans() {
 }
 
 /* ---------- Como atuamos (grade de fotos, como os "Programas" do Instituto Galo) ---------- */
-// Títulos e fotos: painel (/admin → Fotos do site). Os links ficam fixos pela posição.
-const PILLAR_LINKS = ['/quem-somos', '/#caravanas', '/#acao-social', '/quem-somos']
+// Títulos e fotos: painel (/admin → Fotos do site). Cada card abre a página própria do assunto (pedido do Jamerson, 17/11/2026).
+export const PILLAR_SLUGS = ['na-arquibancada', 'caravanas', 'base-do-gama', 'shows-e-cultura']
+const PILLAR_LINKS = PILLAR_SLUGS.map((slug) => `/como-atuamos/${slug}`)
 const PILLARS = fotos.pilares.map((p, i) => ({ title: p.titulo, img: p.foto, href: PILLAR_LINKS[i] ?? '/quem-somos', position: `center ${p.posicao}%` }))
 
 export function HowWeAct() {

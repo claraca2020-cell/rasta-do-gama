@@ -11,6 +11,7 @@ import { AboutPage } from './pages/AboutPage'
 import { ContactPage } from './pages/ContactPage'
 import { FaqPage } from './pages/FaqPage'
 import { HomePage } from './pages/HomePage'
+import { PillarPage, findPillar } from './pages/PillarPage'
 import { ProductPage } from './pages/ProductPage'
 import { ProductsPage } from './pages/ProductsPage'
 
@@ -24,6 +25,8 @@ function resolveRoute(path: string, search: string) {
     const product = findProduct(slug)
     if (product) return { page: <ProductPage key={product.slug} product={product} />, title: `${product.name} — ${SITE_NAME}` }
   }
+  const pilar = findPillar(clean.match(/^\/como-atuamos\/([^/]+)$/)?.[1])
+  if (pilar) return { page: <PillarPage key={pilar.slug} pillar={pilar} />, title: `${pilar.title} — ${SITE_NAME}` }
   if (clean === '/produtos') return { page: <ProductsPage search={search} />, title: `Produtos — ${SITE_NAME}` }
   if (clean === '/quem-somos') return { page: <AboutPage />, title: `Quem somos — ${SITE_NAME}` }
   if (clean === '/duvidas') return { page: <FaqPage />, title: `Dúvidas — ${SITE_NAME}` }
