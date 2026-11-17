@@ -207,7 +207,7 @@ export function Polaroid({ photo }: { photo: Photo }) {
   )
 }
 
-function SocialVideo({ src, poster, label }: { src: string; poster: string; label: string }) {
+export function SocialVideo({ src, poster, label }: { src: string; poster: string; label: string }) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [muted, setMuted] = useState(true)
   const [inView, setInView] = useState(false)
